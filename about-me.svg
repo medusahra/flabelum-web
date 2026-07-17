@@ -1,0 +1,8 @@
+<svg viewBox="0 0 500 600" xmlns="http://www.w3.org/2000/svg">
+  <rect width="500" height="600" fill="#1F1E24"/>
+  <circle cx="250" cy="240" r="120" fill="none" stroke="#35333A" stroke-width="1"/>
+  <path d="M190 200 L250 140 L310 200 L310 340 L190 340 Z" fill="none" stroke="#9A9488" stroke-width="1.5"/>
+  <line x1="190" y1="270" x2="310" y2="270" stroke="#9A9488" stroke-width="1"/>
+  <path d="M235 140 L265 140 L250 100 Z" fill="none" stroke="#B8763E" stroke-width="1" opacity="0.6"/>
+  <text x="250" y="500" text-anchor="middle" fill="#5C5952" font-family="serif" font-size="14" letter-spacing="4">FLABELUM</text>
+</svg>
