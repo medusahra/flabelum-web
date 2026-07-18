@@ -3,30 +3,30 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-<title>Flabelum Artifacts of intent</title>
+<title>Flabelum — Artifacts of Intent</title>
 <meta name="description" content="Flabelum: joyas de autor forjadas a mano. Artifacts of intent. Poética, orfebrería, meditación sobre la forma, la materia y el proceso.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;700&family=Archivo:ital,wght@0,400;0,500;0,700;1,400&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=Space+Grotesk:wght@400;500;700&family=Cormorant+Garamond:ital,wght@0,400;0,500;1,400;1,500&display=swap" rel="stylesheet">
 <style>
   :root{
     --paper:#F4F3EF;
     --ink:#0A0A0A;
-    --ink-soft:#4A4A46;
+    --ink-soft:#5A5750;
     --surface:#FFFFFF;
+    --title:'Archivo Black', sans-serif;
     --display:'Space Grotesk', sans-serif;
-    --body:'Archivo', sans-serif;
+    --elegant:'Cormorant Garamond', serif;
   }
   *{box-sizing:border-box;}
   html{scroll-behavior:smooth;}
   body{
     margin:0;background:var(--paper);color:var(--ink);
-    font-family:var(--body);font-size:17px;line-height:1.6;
+    font-family:var(--elegant);font-size:19px;line-height:1.65;
   }
   a{color:inherit;}
   img{max-width:100%;display:block;}
 
-  /* ---------- Nav ---------- */
   header.site-nav{
     position:sticky;top:0;z-index:60;
     display:flex;align-items:center;justify-content:space-between;
@@ -34,7 +34,7 @@
     border-bottom:2px solid var(--ink);
   }
   .logo-mark{display:flex;align-items:center;gap:10px;text-decoration:none;}
-  .logo-mark img{height:34px;width:auto;}
+  .logo-mark img{height:36px;width:auto;}
   nav.links{display:flex;gap:30px;font-family:var(--display);font-size:0.82rem;letter-spacing:0.04em;text-transform:uppercase;font-weight:500;}
   nav.links a{text-decoration:none;color:var(--ink);position:relative;padding-bottom:3px;}
   nav.links a::after{
@@ -43,107 +43,49 @@
   }
   nav.links a:hover::after, nav.links a:focus-visible::after{transform:scaleX(1);}
 
-  /* ---------- Marquee frieze ---------- */
+  /* ---------- Marquee — seamless, no gaps ---------- */
   .frieze{
     background:var(--ink);color:var(--paper);
     overflow:hidden;white-space:nowrap;padding:11px 0;
-    position:relative;z-index:55;
   }
-  .frieze-track{
-    display:inline-block;padding-left:100%;
-    animation:scroll-left 32s linear infinite;
+  .frieze-inner{display:flex;width:max-content;animation:scroll-left 40s linear infinite;}
+  .frieze-block{display:flex;align-items:center;flex:none;}
+  .frieze-block span.item{
     font-family:var(--display);font-size:0.8rem;letter-spacing:0.1em;
-    text-transform:uppercase;font-weight:500;
+    text-transform:uppercase;font-weight:500;padding:0 14px;flex:none;
   }
-  .frieze-track .dot{display:inline-block;width:6px;height:6px;border-radius:50%;background:var(--paper);margin:0 14px;vertical-align:middle;}
+  .frieze-block .dot{display:inline-block;width:6px;height:6px;border-radius:50%;background:var(--paper);flex:none;}
   @keyframes scroll-left{0%{transform:translateX(0);}100%{transform:translateX(-50%);}}
 
-  /* ---------- Sky stage ---------- */
-  #sky-stage{
+  /* ---------- Hero — geometric, monochrome, in the logo's spirit ---------- */
+  .hero{
     position:relative;overflow:hidden;
-    min-height:min(105vw,760px);
-    background:linear-gradient(180deg,#cfe7f0 0%,#f2e9d8 55%,#f6d9b8 100%);
+    display:grid;grid-template-columns:1fr 1fr;align-items:center;
+    min-height:min(70vw,600px);
+    padding:0 6vw;
   }
-  #sky-stars{
-    position:absolute;inset:0;opacity:0;transition:opacity .4s linear;pointer-events:none;
-    background-image:
-      radial-gradient(1.5px 1.5px at 10% 20%, #fff 100%, transparent 100%),
-      radial-gradient(1.5px 1.5px at 80% 15%, #fff 100%, transparent 100%),
-      radial-gradient(1px 1px at 60% 12%, #fff 100%, transparent 100%),
-      radial-gradient(1.5px 1.5px at 30% 8%, #fff 100%, transparent 100%),
-      radial-gradient(1px 1px at 90% 25%, #fff 100%, transparent 100%),
-      radial-gradient(1.5px 1.5px at 45% 5%, #fff 100%, transparent 100%),
-      radial-gradient(1px 1px at 20% 30%, #fff 100%, transparent 100%);
+  .hero-mark-wrap{
+    position:relative;display:flex;justify-content:center;align-items:center;
   }
-  #sky-dusk{
-    position:absolute;inset:0;background:linear-gradient(180deg,#0d1b3e 0%,#16224f 55%,#2a1b3d 100%);
-    opacity:0;transition:opacity .3s linear;pointer-events:none;
-  }
-  #sky-sun,#sky-moon{
-    position:absolute;width:70px;height:70px;border-radius:50%;
-    transform:translate(-50%,-50%);transition:opacity .3s linear;pointer-events:none;
-  }
-  #sky-sun{background:radial-gradient(circle,#fff6cf 0%,#ffd873 35%,#ffb14d 70%,rgba(255,177,77,0) 100%);box-shadow:0 0 40px 12px rgba(255,214,120,0.55);}
-  #sky-moon{background:radial-gradient(circle,#f4f7ff 0%,#cfd9ee 40%,#8f9dc4 75%,rgba(143,157,196,0) 100%);box-shadow:0 0 30px 8px rgba(180,195,230,0.4);opacity:0;}
-
-  /* cloud parallax layers, built from real assets */
-  .cloud-layer{position:absolute;inset:0;pointer-events:none;}
-  .cloud-layer img{position:absolute;width:min(46vw,420px);opacity:0.9;}
-  .cloud-far img{width:min(52vw,480px);opacity:0.55;filter:blur(0.3px);}
-  .cloud-far .cl{top:6%;left:-8%;animation:drift-slow 70s linear infinite;}
-  .cloud-far .cr{top:14%;right:-10%;animation:drift-slow-rev 80s linear infinite;}
-  .cloud-ambient .cl{top:34%;left:-14%;animation:drift-mid 54s linear infinite;}
-  .cloud-ambient .cr{top:28%;right:-16%;animation:drift-mid-rev 60s linear infinite;}
-  .cloud-front img{width:min(58vw,540px);}
-  .cloud-front .cl{bottom:-6%;left:-16%;animation:drift-fast 40s linear infinite;}
-  .cloud-front .cr{bottom:-10%;right:-18%;animation:drift-fast-rev 46s linear infinite;}
-
-  @keyframes drift-slow{0%{transform:translateX(0);}100%{transform:translateX(6vw);}}
-  @keyframes drift-slow-rev{0%{transform:translateX(0);}100%{transform:translateX(-6vw);}}
-  @keyframes drift-mid{0%{transform:translateX(0);}100%{transform:translateX(4vw);}}
-  @keyframes drift-mid-rev{0%{transform:translateX(0);}100%{transform:translateX(-4vw);}}
-  @keyframes drift-fast{0%{transform:translateX(0);}100%{transform:translateX(3vw);}}
-  @keyframes drift-fast-rev{0%{transform:translateX(0);}100%{transform:translateX(-3vw);}}
-
-  /* decorative arch frame */
-  .arch-frame{
-    position:absolute;top:0;left:0;width:100%;height:auto;
-    z-index:3;pointer-events:none;
-  }
-
-  /* central sun/eye emblem */
-  .emblem-wrap{
-    position:relative;z-index:4;display:flex;justify-content:center;
-    padding-top:min(9vw,86px);
-  }
-  .emblem-wrap img{width:min(28vw,190px);animation:emblem-glow 5s ease-in-out infinite;}
-  @keyframes emblem-glow{0%,100%{filter:drop-shadow(0 0 6px rgba(255,220,150,0.35));}50%{filter:drop-shadow(0 0 18px rgba(255,220,150,0.65));}}
-
-  .hero-copy{
-    position:relative;z-index:4;text-align:center;padding:22px 8vw 0;
-  }
+  .hero-mark-wrap img{width:min(38vw,420px);}
+  .hero-copy{position:relative;z-index:2;}
   .hero-copy .brand{
-    font-family:var(--display);font-weight:700;font-size:clamp(2rem,7vw,3.6rem);
-    letter-spacing:0.06em;margin:0 0 10px;text-transform:uppercase;
+    font-family:var(--title);font-size:clamp(2.6rem,7vw,4.6rem);
+    letter-spacing:0.02em;margin:0 0 14px;line-height:0.95;text-transform:uppercase;
   }
   .hero-copy .tagline{
-    font-family:var(--display);text-transform:uppercase;letter-spacing:0.16em;
-    font-size:0.85rem;font-weight:500;margin:0 0 18px;color:var(--ink-soft);
+    font-family:var(--display);text-transform:uppercase;letter-spacing:0.18em;
+    font-size:0.85rem;font-weight:500;margin:0 0 22px;color:var(--ink-soft);
   }
   .hero-copy .credo{
-    max-width:440px;margin:0 auto;color:var(--ink-soft);font-size:0.98rem;
+    font-family:var(--elegant);font-style:italic;font-size:1.3rem;
+    max-width:420px;color:var(--ink-soft);margin:0;
   }
-
-  .arrow-cue{
-    position:relative;z-index:5;display:flex;justify-content:center;
-    padding:26px 0 40px;
-  }
-  .arrow-cue a{display:inline-block;}
-  .arrow-cue img{
-    width:min(38vw,220px);
-    animation:arrow-float 3.2s ease-in-out infinite;
-  }
-  @keyframes arrow-float{0%,100%{transform:translateY(0) rotate(0deg);}50%{transform:translateY(-10px) rotate(-2deg);}}
+  .arrow-cue{display:flex;justify-content:center;padding:8px 0 44px;}
+  .arrow-cue a{display:flex;flex-direction:column;align-items:center;gap:6px;text-decoration:none;color:var(--ink-soft);}
+  .arrow-cue svg{animation:bob 1.8s ease-in-out infinite;}
+  .arrow-cue span{font-family:var(--display);font-size:0.7rem;letter-spacing:0.14em;text-transform:uppercase;}
+  @keyframes bob{0%,100%{transform:translateY(0);}50%{transform:translateY(8px);}}
 
   section{padding:70px 6vw;}
   .section-head{
@@ -152,15 +94,14 @@
   }
   .section-head .mark{width:14px;height:14px;border-radius:50%;background:var(--ink);flex:none;}
   .section-head h2{
-    font-family:var(--display);font-weight:700;font-size:1.7rem;letter-spacing:0.02em;margin:0;text-transform:uppercase;
+    font-family:var(--title);font-size:1.5rem;letter-spacing:0.01em;margin:0;text-transform:uppercase;
   }
 
   /* ---------- Shop grid ---------- */
   #tienda{background:var(--surface);border-top:2px solid var(--ink);border-bottom:2px solid var(--ink);}
   .grid{
     display:grid;grid-template-columns:repeat(auto-fill,minmax(240px,1fr));gap:2px;
-    max-width:1200px;margin:0 auto;background:var(--ink);
-    border:2px solid var(--ink);
+    max-width:1200px;margin:0 auto;background:var(--ink);border:2px solid var(--ink);
   }
   .piece{background:var(--surface);transition:background .2s ease;}
   .piece:hover{background:var(--paper);}
@@ -168,13 +109,13 @@
   .piece .thumb img{width:100%;height:100%;object-fit:cover;}
   .piece .info{padding:18px 20px 22px;}
   .piece .info .name{font-family:var(--display);font-weight:700;font-size:1.02rem;letter-spacing:0.01em;margin:0 0 6px;text-transform:uppercase;}
-  .piece .info .desc{font-size:0.9rem;color:var(--ink-soft);margin:0 0 14px;}
+  .piece .info .desc{font-family:var(--elegant);font-size:1.05rem;color:var(--ink-soft);margin:0 0 14px;font-style:italic;}
   .piece .info a.cta{
     font-family:var(--display);font-size:0.74rem;text-transform:uppercase;letter-spacing:0.06em;font-weight:500;
     text-decoration:none;color:var(--ink);border-bottom:2px solid var(--ink);padding-bottom:2px;
   }
 
-  /* ---------- About ---------- */
+  /* ---------- About / Sobre la marca ---------- */
   #sobre{
     display:grid;grid-template-columns:0.8fr 1.2fr;gap:56px;align-items:center;
     max-width:1200px;margin:0 auto;padding:80px 6vw;
@@ -183,40 +124,87 @@
   #sobre .about-text .mark-row{display:flex;align-items:center;gap:10px;margin-bottom:16px;}
   #sobre .about-text .mark-row .dot{width:12px;height:12px;border-radius:50%;background:var(--ink);}
   #sobre .about-text .mark-row span.label{font-family:var(--display);font-size:0.8rem;text-transform:uppercase;letter-spacing:0.08em;font-weight:500;}
-  #sobre .about-text h2{font-family:var(--display);font-weight:700;font-size:1.9rem;letter-spacing:0.01em;margin:0 0 20px;text-transform:uppercase;}
-  #sobre .about-text p{color:var(--ink-soft);margin:0 0 16px;}
+  #sobre .about-text h2{font-family:var(--title);font-size:1.7rem;letter-spacing:0.01em;margin:0 0 20px;text-transform:uppercase;}
+  #sobre .about-text p{font-family:var(--elegant);font-size:1.15rem;color:var(--ink-soft);margin:0 0 16px;}
   #sobre .about-text p.credo-line{
-    color:var(--ink);font-weight:500;border-left:3px solid var(--ink);padding-left:16px;
+    color:var(--ink);font-style:italic;border-left:3px solid var(--ink);padding-left:16px;
   }
 
+  /* ---------- Sobre mí ---------- */
+  #sobre-mi{background:var(--surface);border-top:2px solid var(--ink);border-bottom:2px solid var(--ink);}
+  .aboutme-grid{
+    display:grid;grid-template-columns:0.7fr 1.3fr;gap:56px;align-items:center;
+    max-width:1100px;margin:0 auto;
+  }
+  .aboutme-grid img{border:2px solid var(--ink);}
+  .aboutme-grid p{font-family:var(--elegant);font-size:1.15rem;color:var(--ink-soft);margin:0 0 16px;}
+  .aboutme-grid .signature{font-family:var(--elegant);font-style:italic;font-size:1.2rem;color:var(--ink);}
+
   /* ---------- FAQ ---------- */
-  #faq{background:var(--surface);border-top:2px solid var(--ink);border-bottom:2px solid var(--ink);}
+  #faq{background:var(--paper);}
   .faq-list{max-width:760px;margin:0 auto;}
   details{border-bottom:1px solid var(--ink);padding:20px 0;}
   details:first-child{border-top:1px solid var(--ink);}
   summary{
-    cursor:pointer;font-family:var(--display);font-weight:700;font-size:1.02rem;text-transform:uppercase;letter-spacing:0.01em;
+    cursor:pointer;font-family:var(--display);font-weight:700;font-size:1rem;text-transform:uppercase;letter-spacing:0.01em;
     list-style:none;display:flex;justify-content:space-between;align-items:center;
   }
   summary::-webkit-details-marker{display:none;}
   summary::after{content:"+";font-family:var(--display);font-size:1.3rem;}
   details[open] summary::after{content:"–";}
-  details p{color:var(--ink-soft);margin:14px 0 0;max-width:600px;}
+  details p{font-family:var(--elegant);font-size:1.1rem;color:var(--ink-soft);margin:14px 0 0;max-width:600px;}
+
+  /* ---------- Pagos ---------- */
+  #pagos{background:var(--surface);border-top:2px solid var(--ink);border-bottom:2px solid var(--ink);}
+  .pay-grid{
+    display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:14px;
+    max-width:900px;margin:0 auto;
+  }
+  .pay-btn{
+    display:flex;align-items:center;justify-content:center;
+    border:2px solid var(--ink);padding:20px 16px;text-decoration:none;color:var(--ink);
+    font-family:var(--display);font-weight:700;font-size:0.95rem;letter-spacing:0.02em;text-transform:uppercase;
+    transition:background .2s ease, color .2s ease;text-align:center;
+  }
+  .pay-btn:hover{background:var(--ink);color:var(--paper);}
+  .pay-note{
+    max-width:900px;margin:20px auto 0;font-family:var(--elegant);font-style:italic;color:var(--ink-soft);font-size:1rem;text-align:center;
+  }
+
+  /* ---------- Catálogo ---------- */
+  #catalogo{background:var(--paper);}
+  .catalog-box{
+    max-width:700px;margin:0 auto;text-align:center;
+    border:2px solid var(--ink);padding:50px 6vw;
+  }
+  .catalog-box p{font-family:var(--elegant);font-size:1.1rem;color:var(--ink-soft);margin:0 0 26px;}
+  .catalog-actions{display:flex;gap:16px;justify-content:center;flex-wrap:wrap;}
+  .catalog-actions a{
+    font-family:var(--display);font-weight:700;font-size:0.85rem;letter-spacing:0.04em;text-transform:uppercase;
+    text-decoration:none;padding:14px 26px;border:2px solid var(--ink);color:var(--ink);
+    transition:background .2s ease, color .2s ease;
+  }
+  .catalog-actions a.primary{background:var(--ink);color:var(--paper);}
+  .catalog-actions a.primary:hover{opacity:0.8;}
+  .catalog-actions a:not(.primary):hover{background:var(--ink);color:var(--paper);}
 
   /* ---------- Footer ---------- */
   footer{
     padding:50px 6vw 36px;display:flex;flex-wrap:wrap;gap:20px;justify-content:space-between;align-items:center;
   }
   footer .fmark{display:flex;align-items:center;gap:10px;}
-  footer .fmark img{height:24px;width:auto;}
+  footer .fmark img{height:26px;width:auto;}
   footer .socials{display:flex;gap:22px;align-items:center;}
   footer .socials a{text-decoration:none;color:var(--ink);display:flex;align-items:center;}
   footer .socials img{height:20px;width:auto;}
 
-  @media (prefers-reduced-motion: reduce){
-    .cloud-layer img, .arrow-cue img, .emblem-wrap img, .frieze-track{animation:none !important;}
+  @media (prefers-reduced-motion: reduce){.frieze-inner, .arrow-cue svg{animation:none !important;}}
+  @media (max-width:820px){
+    .hero{grid-template-columns:1fr;text-align:center;padding-top:50px;}
+    .hero-copy .credo{margin:0 auto;}
+    .hero-mark-wrap{order:-1;margin-bottom:20px;}
+    #sobre, .aboutme-grid{grid-template-columns:1fr;}
   }
-  @media (max-width:820px){#sobre{grid-template-columns:1fr;}}
   @media (max-width:520px){nav.links{display:none;}}
 </style>
 </head>
@@ -228,60 +216,38 @@
   </a>
   <nav class="links">
     <a href="#tienda">Tienda</a>
-    <a href="#sobre">Sobre</a>
+    <a href="#sobre-mi">Sobre mí</a>
+    <a href="#pagos">Pagos</a>
     <a href="#faq">FAQ</a>
     <a href="https://www.instagram.com/flabelum" target="_blank" rel="noopener">Instagram</a>
   </nav>
 </header>
 
 <div class="frieze" aria-hidden="true">
-  <div class="frieze-track">
-    FLABELUM <span class="dot"></span> ARTIFACTS OF INTENT <span class="dot"></span> METALSMITH, JOYAS DE AUTOR, HANDMADE <span class="dot"></span>
-    FLABELUM <span class="dot"></span> ARTIFACTS OF INTENT  <span class="dot"></span> METALSMITH, JOYAS DE AUTOR, HANDMADE <span class="dot"></span>
-    FLABELUM <span class="dot"></span> ARTIFACTS OF INTENT  <span class="dot"></span> METALSMITH, JOYAS DE AUTOR, HANDMADE <span class="dot"></span>
-    FLABELUM <span class="dot"></span> ARTIFACTS OF INTENT  <span class="dot"></span> METALSMITH, JOYAS DE AUTOR, HANDMADE <span class="dot"></span>
+  <div class="frieze-inner" id="friezeInner">
+    <div class="frieze-block" id="friezeBlockA"></div>
+    <div class="frieze-block" id="friezeBlockB"></div>
   </div>
 </div>
 
 <main id="top">
-  <div id="sky-stage" aria-hidden="false">
-    <div id="sky-dusk"></div>
-    <div id="sky-stars"></div>
-
-    <div class="cloud-layer cloud-far">
-      <img class="cl" src="assets/cloud_far_left.webp" alt="">
-      <img class="cr" src="assets/cloud_far_right.webp" alt="">
-    </div>
-    <div class="cloud-layer cloud-ambient">
-      <img class="cl" src="assets/cloud_ambient_left.webp" alt="">
-      <img class="cr" src="assets/cloud_ambient_right.webp" alt="">
-    </div>
-
-    <div id="sky-sun"></div>
-    <div id="sky-moon"></div>
-
-    <img class="arch-frame" src="assets/background_arc.webp" alt="">
-
-    <div class="emblem-wrap">
-      <img src="assets/star_container_label.svg" alt="Flabelum — emblema">
-    </div>
-
+  <section class="hero">
     <div class="hero-copy">
       <p class="brand">Flabelum</p>
       <p class="tagline">Artifacts of Intent</p>
-      <p class="credo">Joyas de autor forjadas a mano</p>
+      <p class="credo">Joyas de autor forjadas a mano.</p>
     </div>
-
-    <div class="cloud-layer cloud-front">
-      <img class="cl" src="assets/cloud_front_left.webp" alt="">
-      <img class="cr" src="assets/cloud_front_right.webp" alt="">
+    <div class="hero-mark-wrap">
+      <img src="assets/hero-mark.svg" alt="">
     </div>
-
-    <div class="arrow-cue">
-      <a href="#tienda" aria-label="Bajar a la tienda">
-        <img src="assets/arrow_button_final.webp" alt="Ir a la tienda">
-      </a>
-    </div>
+  </section>
+  <div class="arrow-cue">
+    <a href="#tienda">
+      <svg width="26" height="26" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M12 4 L12 20 M6 14 L12 20 L18 14" stroke="#0A0A0A" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+      </svg>
+      <span>Ver tienda</span>
+    </a>
   </div>
 
   <section id="tienda">
@@ -306,7 +272,7 @@
       <article class="piece">
         <div class="thumb"><img src="piece-3.svg" alt="Colgante de plata, pieza Flabelum"></div>
         <div class="info">
-          <p class="name">Colgante — </p>
+          <p class="name">Colgante — Attoverso</p>
           <p class="desc">Plata 950, cadena incluida.</p>
           <a class="cta" href="https://www.instagram.com/flabelum" target="_blank" rel="noopener">Consultar por DM →</a>
         </div>
@@ -323,24 +289,49 @@
   </section>
 
   <section id="sobre">
-    <img class="about-img" src="about-me.svg" alt="Retrato / taller de Flabelum">
+    <img class="about-img" src="about-me.svg" alt="Taller Flabelum">
     <div class="about-text">
-      <div class="mark-row"><span class="dot"></span><span class="label">Sobre</span></div>
-      <h2>Artifacts of intent</h2>
-      <p>Flabelum: Artifacts of Intent
-[Serie: Attoverso]
+      <div class="mark-row"><span class="dot"></span><span class="label">Artifacts of Intent — Serie: Attoverso</span></div>
+      <h2>Artifacts of Intent</h2>
+      <p>La joyería es un ejercicio de física y sombra. Mi trabajo en Flabelum no responde a cánones estéticos; responde a la resistencia de la materia ante mi voluntad.</p>
+      <p>Utilizo plata 950 y oro de 18K no para adornar, sino para articular la forma. Cada pieza es un bloque de intención pura, forjado en el aislamiento absoluto de mi taller. No hay procesos industrializados. No hay mediaciones. Solo el metal, el fuego y la persistencia de mis manos sobre la amatista ahumada y el vacío.</p>
+      <p>Attoverso es un registro de esta colisión entre lo estelar y lo terrenal. Las piezas que componen esta serie poseen una densidad palpable; son objetos que cargan con la pesadez de lo barroco y la frialdad del cosmos. No están diseñadas para encajar; están diseñadas para existir como extensiones del cuerpo.</p>
+      <p>La belleza es un residuo de la creación, no su fin. En Flabelum, lo que permanece es la marca del cincel, el peso de la plata maciza y la arquitectura de un rito solitario.</p>
+      <p class="credo-line">Materia. Intención. Permanencia. No hago accesorios. Hago artefactos.</p>
+    </div>
+  </section>
 
-</p>La joyería es un ejercicio de física y sombra.</p> Mi trabajo en Flabelum no responde a cánones estéticos; responde a la resistencia de la materia ante mi voluntad.<p>
-  <p> </p>
+  <section id="sobre-mi">
+    <div class="section-head" style="max-width:1100px;margin-left:auto;margin-right:auto;"><span class="mark"></span><h2>Sobre mí</h2></div>
+    <div class="aboutme-grid">
+      <img src="assets/about-photo-placeholder.svg" alt="Foto de la creadora de Flabelum">
+      <div>
+        <p><em>[Espacio para tu texto — contame en un par de líneas por qué hacés joyería, cómo empezaste, o qué representa este oficio para vos, y lo dejamos escrito acá con tu voz.]</em></p>
+        <p class="signature">— Artifacts of Intent</p>
+      </div>
+    </div>
+  </section>
 
-Utilizo plata 950 y oro de 18K no para adornar, sino para articular la forma.</p> Cada pieza es un bloque de intención pura, forjado en el aislamiento absoluto de mi taller. No hay procesos industrializados. No hay mediaciones. Solo el metal, el fuego y la persistencia de mis manos sobre la amatista ahumada y el vacío.
-      <p> </p>
-      <p>Attoverso es un registro de esta colisión entre lo estelar y lo terrenal. Las piezas que compones esta serie poseen una densidad palpable; son objetos que cargan con la pesadez de lo barroco y la frialdad del cosmos. No están diseñadas para encajar; están diseñadas para existir como extensiones del cuerpo.</p>
+  <section id="pagos">
+    <div class="section-head" style="max-width:900px;margin-left:auto;margin-right:auto;"><span class="mark"></span><h2>Métodos de pago</h2></div>
+    <div class="pay-grid">
+      <a class="pay-btn" href="https://www.paypal.com/paypalme/medusahra" target="_blank" rel="noopener">PayPal</a>
+      <a class="pay-btn" href="https://checkout.nequi.wompi.co/l/VPOS_Nuchcf" target="_blank" rel="noopener">Tarjeta de crédito</a>
+      <a class="pay-btn" href="https://link.mercadopago.com.co/medusahra" target="_blank" rel="noopener">Mercado Pago</a>
+      <span class="pay-btn" style="cursor:default;">BRE-B: 0091995146</span>
+      <a class="pay-btn" href="https://wa.me/573196423502?text=Hola%2C%20quiero%20un%20link%20de%20pago%20personalizado" target="_blank" rel="noopener">Pedir link por WhatsApp</a>
+    </div>
+    <p class="pay-note">Elegí el medio que prefieras. Para Nequi u otro método, escribinos por WhatsApp y te enviamos un link de pago personalizado.</p>
+  </section>
 
-La belleza es un residuo de la creación, no su fin. En Flabelum, lo que permanece es la marca del cincel, el peso de la plata maciza y la arquitectura de un rito solitario.
-
-Materia. Intención. Permanencia.</p>
-      <p class="credo-line">No hago accesorios. Hago artefactos.</p>
+  <section id="catalogo">
+    <div class="catalog-box">
+      <div class="section-head" style="border:none;justify-content:center;margin-bottom:20px;"><span class="mark"></span><h2>Catálogo</h2></div>
+      <p>Todas las piezas disponibles, en un solo lugar. Miralo en línea o descargalo para verlo cuando quieras.</p>
+      <div class="catalog-actions">
+        <a class="primary" href="assets/catalogo-flabelum.pdf" target="_blank" rel="noopener">Ver catálogo</a>
+        <a href="assets/catalogo-flabelum.pdf" download>Descargar PDF</a>
+      </div>
     </div>
   </section>
 
@@ -349,15 +340,43 @@ Materia. Intención. Permanencia.</p>
     <div class="faq-list">
       <details open>
         <summary>¿Cómo compro una pieza?</summary>
-        <p>Escribime por Instagram (@flabelum) o chat de WhatsApp de Flabelum con el nombre de la pieza que te interesa. Coordinamos disponibilidad, envío y forma de pago.</p>
+        <p>Escribime por Instagram (@flabelum) o por WhatsApp con el nombre de la pieza que te interesa. Coordinamos disponibilidad, envío y forma de pago.</p>
+      </details>
+      <details>
+        <summary>¿Cómo es el proceso de compra?</summary>
+        <p>Especificá el modelo que querés y hacé el pago del 50% o 100% del valor. Una vez confirmado el pago (mandando el comprobante al correo o por WhatsApp), iniciamos la producción o el envío. Entrega a domicilio dentro de los siguientes 7 días hábiles. Envío gratis.</p>
+      </details>
+      <details>
+        <summary>¿Qué métodos de pago aceptan?</summary>
+        <p>Wompi, PayPal, Mercado Pago, Nequi Negocios y BRE-B. Los links están en la sección "Métodos de pago" de esta página.</p>
       </details>
       <details>
         <summary>¿Hacen piezas por encargo?</summary>
-        <p>Sí, comisiones personalizadas en plata u oro, incluyen certificado de autenticidad y estuche de lujo. Cuéntame la idea por DM o WhatsApp y te armo la cotización.</p>
+        <p>Sí, comisiones personalizadas en plata u oro, incluyen certificado de autenticidad y estuche de lujo. Contame la idea por DM o WhatsApp y te armo la cotización.</p>
       </details>
       <details>
         <summary>¿Cuánto tarda un envío?</summary>
         <p>Depende de la ciudad y de si la pieza es de catálogo o hecha a pedido. Te confirmo el tiempo exacto al coordinar la compra.</p>
+      </details>
+      <details>
+        <summary>¿Hacen envíos internacionales?</summary>
+        <p>Sí, consultá disponibilidad y costo de envío a tu país por DM antes de confirmar la compra.</p>
+      </details>
+      <details>
+        <summary>¿Cómo sé mi talla de anillo?</summary>
+        <p>Te puedo guiar para medir tu talla en casa con un hilo o una tira de papel — escribime y te paso la guía paso a paso.</p>
+      </details>
+      <details>
+        <summary>¿Las piezas son de plata real?</summary>
+        <p>Sí, todas las piezas son plata 950. Cada una incluye certificado de autenticidad.</p>
+      </details>
+      <details>
+        <summary>¿Cómo cuido mis piezas de plata?</summary>
+        <p>Guardalas en un lugar seco, lejos de perfumes y cremas, y limpialas con un paño suave. Con cada compra recibís un manual de cuidado.</p>
+      </details>
+      <details>
+        <summary>¿Hacen cambios o devoluciones?</summary>
+        <p>Sí, dentro de los primeros días después de recibir tu pedido, siempre que la pieza esté sin uso. Coordinamos los detalles por DM.</p>
       </details>
     </div>
   </section>
@@ -368,48 +387,46 @@ Materia. Intención. Permanencia.</p>
   <div class="socials">
     <a href="https://www.instagram.com/flabelum" target="_blank" rel="noopener"><img src="assets/social_instagram.svg" alt="Instagram"></a>
     <a href="mailto:flabelum.flabelum@gmail.com"><img src="assets/social_mail.svg" alt="Correo"></a>
+    <a href="https://wa.me/573196423502" target="_blank" rel="noopener" style="font-family:var(--display);font-size:0.78rem;text-transform:uppercase;letter-spacing:0.05em;font-weight:500;">WhatsApp</a>
   </div>
 </footer>
 
 <script>
 (function(){
-  var stage = document.getElementById('sky-stage');
-  var sun = document.getElementById('sky-sun');
-  var moon = document.getElementById('sky-moon');
-  var dusk = document.getElementById('sky-dusk');
-  var stars = document.getElementById('sky-stars');
-  if(!stage) return;
+  var phrase = [
+    { type:'text', value:'FLABELUM' },
+    { type:'dot' },
+    { type:'text', value:'ARTIFACTS OF INTENT' },
+    { type:'dot' },
+    { type:'text', value:'METALSMITH, JOYAS DE AUTOR, HANDMADE' },
+    { type:'dot' }
+  ];
 
-  function clamp01(n){ return Math.min(Math.max(n, 0), 1); }
-
-  function updateSky(){
-    var rect = stage.getBoundingClientRect();
-    var stageHeight = rect.height;
-    var scrolledPast = -rect.top;
-    var progress = clamp01(scrolledPast / stageHeight);
-
-    var w = stage.clientWidth;
-    var h = stageHeight;
-
-    var sunX = w * 0.15 + progress * w * 0.7;
-    var sunY = h * 0.16 + Math.sin(progress * Math.PI) * -h * 0.06;
-    sun.style.left = sunX + 'px';
-    sun.style.top = sunY + 'px';
-    sun.style.opacity = (1 - progress * 1.4).toString();
-
-    var moonX = w * 0.85 - progress * w * 0.7;
-    var moonY = h * 0.14 + Math.sin((1 - progress) * Math.PI) * -h * 0.05;
-    moon.style.left = moonX + 'px';
-    moon.style.top = moonY + 'px';
-    moon.style.opacity = Math.max(0, (progress - 0.45) * 1.8).toString();
-
-    dusk.style.opacity = Math.max(0, (progress - 0.3) * 1.3).toString();
-    stars.style.opacity = Math.max(0, (progress - 0.55) * 1.6).toString();
+  function buildBlock(el, repeats){
+    var frag = document.createDocumentFragment();
+    for(var r=0;r<repeats;r++){
+      phrase.forEach(function(p){
+        if(p.type === 'text'){
+          var span = document.createElement('span');
+          span.className = 'item';
+          span.textContent = p.value;
+          frag.appendChild(span);
+        } else {
+          var dot = document.createElement('span');
+          dot.className = 'dot';
+          frag.appendChild(dot);
+        }
+      });
+    }
+    el.appendChild(frag);
   }
 
-  window.addEventListener('scroll', updateSky, { passive: true });
-  window.addEventListener('resize', updateSky);
-  updateSky();
+  var blockA = document.getElementById('friezeBlockA');
+  var blockB = document.getElementById('friezeBlockB');
+  // Enough repeats to comfortably exceed any viewport width, so the
+  // seamless -50% loop never shows a blank gap.
+  buildBlock(blockA, 12);
+  buildBlock(blockB, 12);
 })();
 </script>
 </body>
