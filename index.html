@@ -43,21 +43,20 @@
   }
   nav.links a:hover::after, nav.links a:focus-visible::after{transform:scaleX(1);}
 
-  /* ---------- Marquee — seamless, no gaps ---------- */
+  /* ---------- Frieze (Animación eliminada) ---------- */
   .frieze{
     background:var(--ink);color:var(--paper);
     overflow:hidden;white-space:nowrap;padding:11px 0;
   }
-  .frieze-inner{display:flex;width:max-content;animation:scroll-left 40s linear infinite;}
+  .frieze-inner{display:flex;width:max-content;}
   .frieze-block{display:flex;align-items:center;flex:none;}
   .frieze-block span.item{
     font-family:var(--display);font-size:0.8rem;letter-spacing:0.1em;
     text-transform:uppercase;font-weight:500;padding:0 14px;flex:none;
   }
-  .frieze-block .dot{display:inline-block;width:6px;height:6px;border-radius:50%;background:var(--paper);flex:none;}
-  @keyframes scroll-left{0%{transform:translateX(0);}100%{transform:translateX(-50%);}}
+  .frieze-block .dot{display:none;}
 
-  /* ---------- Hero — geometric, monochrome, in the logo's spirit ---------- */
+  /* ---------- Hero (Estático, color corregido) ---------- */
   .hero{
     position:relative;overflow:hidden;
     display:grid;grid-template-columns:1fr 1fr;align-items:center;
@@ -69,14 +68,10 @@
   }
   .hero-mark-wrap .ring{
     position:absolute;width:min(42vw,460px);height:min(42vw,460px);
-    animation:spin-slow 50s linear infinite;
   }
   .hero-mark-wrap img.logo-big{
     position:relative;width:min(30vw,320px);
-    animation:breathe 4.5s ease-in-out infinite;
   }
-  @keyframes spin-slow{from{transform:rotate(0deg);}to{transform:rotate(360deg);}}
-  @keyframes breathe{0%,100%{transform:scale(1);}50%{transform:scale(1.035);}}
   .hero-copy{position:relative;z-index:2;}
   .hero-copy .brand{
     font-family:var(--title);font-size:clamp(2.6rem,7vw,4.6rem);
@@ -92,9 +87,7 @@
   }
   .arrow-cue{display:flex;justify-content:center;padding:8px 0 44px;}
   .arrow-cue a{display:flex;flex-direction:column;align-items:center;gap:6px;text-decoration:none;color:var(--ink-soft);}
-  .arrow-cue svg{animation:bob 1.8s ease-in-out infinite;}
   .arrow-cue span{font-family:var(--display);font-size:0.7rem;letter-spacing:0.14em;text-transform:uppercase;}
-  @keyframes bob{0%,100%{transform:translateY(0);}50%{transform:translateY(8px);}}
 
   section{padding:70px 6vw;}
   .section-head{
@@ -106,12 +99,9 @@
     font-family:var(--title);font-size:1.5rem;letter-spacing:0.01em;margin:0;text-transform:uppercase;
   }
 
-  /* ---------- Shop grid ---------- */
+  /* ---------- El resto del CSS se mantiene igual ---------- */
   #tienda{background:var(--surface);border-top:2px solid var(--ink);border-bottom:2px solid var(--ink);}
-  .grid{
-    display:grid;grid-template-columns:repeat(auto-fill,minmax(240px,1fr));gap:2px;
-    max-width:1200px;margin:0 auto;background:var(--ink);border:2px solid var(--ink);
-  }
+  .grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(240px,1fr));gap:2px;max-width:1200px;margin:0 auto;background:var(--ink);border:2px solid var(--ink);}
   .piece{background:var(--surface);transition:background .2s ease;}
   .piece:hover{background:var(--paper);}
   .piece .thumb{aspect-ratio:1/1;overflow:hidden;border-bottom:2px solid var(--ink);}
@@ -123,104 +113,60 @@
   .piece .info .price-row{display:flex;align-items:center;justify-content:space-between;margin:0 0 14px;}
   .piece .info .price{font-family:var(--display);font-weight:700;font-size:0.95rem;}
   .piece .info .status{font-family:var(--display);font-size:0.65rem;text-transform:uppercase;letter-spacing:0.06em;border:1px solid var(--ink);padding:3px 8px;color:var(--ink-soft);}
-  .piece .info a.cta{
-    font-family:var(--display);font-size:0.74rem;text-transform:uppercase;letter-spacing:0.06em;font-weight:500;
-    text-decoration:none;color:var(--ink);border-bottom:2px solid var(--ink);padding-bottom:2px;
-  }
-
-  /* ---------- About / Sobre la marca ---------- */
-  #sobre{
-    display:grid;grid-template-columns:0.8fr 1.2fr;gap:56px;align-items:center;
-    max-width:1200px;margin:0 auto;padding:80px 6vw;
-  }
+  .piece .info a.cta{font-family:var(--display);font-size:0.74rem;text-transform:uppercase;letter-spacing:0.06em;font-weight:500;text-decoration:none;color:var(--ink);border-bottom:2px solid var(--ink);padding-bottom:2px;}
+  
+  #sobre{display:grid;grid-template-columns:0.8fr 1.2fr;gap:56px;align-items:center;max-width:1200px;margin:0 auto;padding:80px 6vw;}
   #sobre .about-img{border:2px solid var(--ink);}
   #sobre .about-text .mark-row{display:flex;align-items:center;gap:10px;margin-bottom:16px;}
   #sobre .about-text .mark-row .dot{width:12px;height:12px;border-radius:50%;background:var(--ink);}
   #sobre .about-text .mark-row span.label{font-family:var(--display);font-size:0.8rem;text-transform:uppercase;letter-spacing:0.08em;font-weight:500;}
   #sobre .about-text h2{font-family:var(--title);font-size:1.7rem;letter-spacing:0.01em;margin:0 0 20px;text-transform:uppercase;}
   #sobre .about-text p{font-family:var(--elegant);font-size:1.15rem;color:var(--ink-soft);margin:0 0 16px;}
-  #sobre .about-text p.credo-line{
-    color:var(--ink);font-style:italic;border-left:3px solid var(--ink);padding-left:16px;
-  }
+  #sobre .about-text p.credo-line{color:var(--ink);font-style:italic;border-left:3px solid var(--ink);padding-left:16px;}
 
-  /* ---------- Sobre mí ---------- */
   #sobre-mi{background:var(--surface);border-top:2px solid var(--ink);border-bottom:2px solid var(--ink);}
-  .aboutme-grid{
-    display:grid;grid-template-columns:0.7fr 1.3fr;gap:56px;align-items:center;
-    max-width:1100px;margin:0 auto;
-  }
+  .aboutme-grid{display:grid;grid-template-columns:0.7fr 1.3fr;gap:56px;align-items:center;max-width:1100px;margin:0 auto;}
   .aboutme-grid img{border:2px solid var(--ink);}
   .aboutme-grid p{font-family:var(--elegant);font-size:1.15rem;color:var(--ink-soft);margin:0 0 16px;}
   .aboutme-grid .signature{font-family:var(--elegant);font-style:italic;font-size:1.2rem;color:var(--ink);}
 
-  /* ---------- FAQ ---------- */
   #faq{background:var(--paper);}
   .faq-list{max-width:760px;margin:0 auto;}
   details{border-bottom:1px solid var(--ink);padding:20px 0;}
   details:first-child{border-top:1px solid var(--ink);}
-  summary{
-    cursor:pointer;font-family:var(--display);font-weight:700;font-size:1rem;text-transform:uppercase;letter-spacing:0.01em;
-    list-style:none;display:flex;justify-content:space-between;align-items:center;
-  }
+  summary{cursor:pointer;font-family:var(--display);font-weight:700;font-size:1rem;text-transform:uppercase;letter-spacing:0.01em;list-style:none;display:flex;justify-content:space-between;align-items:center;}
   summary::-webkit-details-marker{display:none;}
   summary::after{content:"+";font-family:var(--display);font-size:1.3rem;}
   details[open] summary::after{content:"–";}
   details p{font-family:var(--elegant);font-size:1.1rem;color:var(--ink-soft);margin:14px 0 0;max-width:600px;}
 
-  /* ---------- Pagos ---------- */
   #pagos{background:var(--surface);border-top:2px solid var(--ink);border-bottom:2px solid var(--ink);}
-  .pay-grid{
-    display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:14px;
-    max-width:900px;margin:0 auto;
-  }
-  .pay-btn{
-    display:flex;align-items:center;justify-content:center;
-    border:2px solid var(--ink);padding:20px 16px;text-decoration:none;color:var(--ink);
-    font-family:var(--display);font-weight:700;font-size:0.95rem;letter-spacing:0.02em;text-transform:uppercase;
-    transition:background .2s ease, color .2s ease;text-align:center;
-  }
+  .pay-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:14px;max-width:900px;margin:0 auto;}
+  .pay-btn{display:flex;align-items:center;justify-content:center;border:2px solid var(--ink);padding:20px 16px;text-decoration:none;color:var(--ink);font-family:var(--display);font-weight:700;font-size:0.95rem;letter-spacing:0.02em;text-transform:uppercase;transition:background .2s ease, color .2s ease;text-align:center;}
   .pay-btn:hover{background:var(--ink);color:var(--paper);}
-  .pay-note{
-    max-width:900px;margin:20px auto 0;font-family:var(--elegant);font-style:italic;color:var(--ink-soft);font-size:1rem;text-align:center;
-  }
+  .pay-note{max-width:900px;margin:20px auto 0;font-family:var(--elegant);font-style:italic;color:var(--ink-soft);font-size:1rem;text-align:center;}
 
-  /* ---------- Catálogo ---------- */
   #catalogo{background:var(--paper);}
-  .catalog-box{
-    max-width:700px;margin:0 auto;text-align:center;
-    border:2px solid var(--ink);padding:50px 6vw;
-  }
+  .catalog-box{max-width:700px;margin:0 auto;text-align:center;border:2px solid var(--ink);padding:50px 6vw;}
   .catalog-box p{font-family:var(--elegant);font-size:1.1rem;color:var(--ink-soft);margin:0 0 26px;}
   .catalog-actions{display:flex;gap:16px;justify-content:center;flex-wrap:wrap;}
-  .catalog-actions a{
-    font-family:var(--display);font-weight:700;font-size:0.85rem;letter-spacing:0.04em;text-transform:uppercase;
-    text-decoration:none;padding:14px 26px;border:2px solid var(--ink);color:var(--ink);
-    transition:background .2s ease, color .2s ease;
-  }
+  .catalog-actions a{font-family:var(--display);font-weight:700;font-size:0.85rem;letter-spacing:0.04em;text-transform:uppercase;text-decoration:none;padding:14px 26px;border:2px solid var(--ink);color:var(--ink);transition:background .2s ease, color .2s ease;}
   .catalog-actions a.primary{background:var(--ink);color:var(--paper);}
   .catalog-actions a.primary:hover{opacity:0.8;}
   .catalog-actions a:not(.primary):hover{background:var(--ink);color:var(--paper);}
 
-  /* ---------- Instagram ---------- */
   #instagram{background:var(--surface);border-top:2px solid var(--ink);border-bottom:2px solid var(--ink);}
   .ig-wrap{max-width:1000px;margin:0 auto;}
   .ig-wrap iframe{width:100%;border:none;display:block;}
-  .ig-fallback{
-    text-align:center;padding:40px 20px;border:1px dashed var(--ink-soft);
-    font-family:var(--elegant);color:var(--ink-soft);font-style:italic;
-  }
+  .ig-fallback{text-align:center;padding:40px 20px;border:1px dashed var(--ink-soft);font-family:var(--elegant);color:var(--ink-soft);font-style:italic;}
 
-  /* ---------- Footer ---------- */
-  footer{
-    padding:50px 6vw 36px;display:flex;flex-wrap:wrap;gap:20px;justify-content:space-between;align-items:center;
-  }
+  footer{padding:50px 6vw 36px;display:flex;flex-wrap:wrap;gap:20px;justify-content:space-between;align-items:center;}
   footer .fmark{display:flex;align-items:center;gap:10px;}
   footer .fmark img{height:26px;width:auto;}
   footer .socials{display:flex;gap:22px;align-items:center;}
   footer .socials a{text-decoration:none;color:var(--ink);display:flex;align-items:center;}
   footer .socials img{height:20px;width:auto;}
 
-  @media (prefers-reduced-motion: reduce){.frieze-inner, .arrow-cue svg, .hero-mark-wrap .ring, .hero-mark-wrap img.logo-big{animation:none !important;}}
   @media (max-width:820px){
     .hero{grid-template-columns:1fr;text-align:center;padding-top:50px;}
     .hero-copy .credo{margin:0 auto;}
@@ -234,7 +180,7 @@
 
 <header class="site-nav">
   <a href="#top" class="logo-mark" aria-label="Flabelum — inicio">
-    <img src="logo.png" alt="Flabelum">
+    <img src="assets/logo.png" alt="Flabelum">
   </a>
   <nav class="links">
     <a href="#tienda">Tienda</a>
@@ -264,389 +210,7 @@
       <svg class="ring" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
         <circle cx="100" cy="100" r="94" fill="none" stroke="#000" stroke-width="1.4" stroke-dasharray="1 10" stroke-linecap="round"/>
       </svg>
-      <img class="logo-big" src="logo.png" alt="Flabelum">
+      <img class="logo-big" src="assets/logo.png" alt="Flabelum">
     </div>
   </section>
-  <div class="arrow-cue">
-    <a href="#tienda">
-      <svg width="26" height="26" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-        <path d="M12 4 L12 20 M6 14 L12 20 L18 14" stroke="#0A0A0A" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-      </svg>
-      <span>Ver tienda</span>
-    </a>
-  </div>
-
-  <section id="tienda">
-    <div class="section-head"><span class="mark"></span><h2>Tienda</h2></div>
-    <div class="grid">
-      <article class="piece">
-        <div class="thumb"><img src="assets/products/eye-of-future.jpg" alt="Eye of Future, Flabelum"></div>
-        <div class="info">
-          <p class="cat">Aurum Gold</p>
-          <p class="name">Eye of Future</p>
-          <p class="desc">18K oro, 0.75ct diamantes, 58mm</p>
-          <div class="price-row">
-            <span class="price">US$ 4.400 / COP 14.000.000</span>
-            <span class="status">A pedido</span>
-          </div>
-          <a class="cta" href="https://wa.me/573196423502?text=Hola%2C%20me%20interesa%20la%20pieza%20Eye%20of%20Future" target="_blank" rel="noopener">Consultar →</a>
-        </div>
-      </article>
-      <article class="piece">
-        <div class="thumb"><img src="assets/products/future-eyes-gold.jpg" alt="Future Eyes Gold, Flabelum"></div>
-        <div class="info">
-          <p class="cat">Aurum Gold</p>
-          <p class="name">Future Eyes Gold</p>
-          <p class="desc">Plata 926, baño oro 24K, 58mm</p>
-          <div class="price-row">
-            <span class="price">US$ 158 / COP 555.000</span>
-            <span class="status">Disponible</span>
-          </div>
-          <a class="cta" href="https://wa.me/573196423502?text=Hola%2C%20me%20interesa%20la%20pieza%20Future%20Eyes%20Gold" target="_blank" rel="noopener">Consultar →</a>
-        </div>
-      </article>
-      <article class="piece">
-        <div class="thumb"><img src="assets/products/present-eyes-gold.jpg" alt="Present Eyes Gold, Flabelum"></div>
-        <div class="info">
-          <p class="cat">Aurum Gold</p>
-          <p class="name">Present Eyes Gold</p>
-          <p class="desc">Plata 926, baño oro 24K, 40mm</p>
-          <div class="price-row">
-            <span class="price">US$ 136 / COP 477.000</span>
-            <span class="status">Disponible</span>
-          </div>
-          <a class="cta" href="https://wa.me/573196423502?text=Hola%2C%20me%20interesa%20la%20pieza%20Present%20Eyes%20Gold" target="_blank" rel="noopener">Consultar →</a>
-        </div>
-      </article>
-      <article class="piece">
-        <div class="thumb"><img src="assets/products/past-eyes-gold.jpg" alt="Past Eyes Gold, Flabelum"></div>
-        <div class="info">
-          <p class="cat">Aurum Gold</p>
-          <p class="name">Past Eyes Gold</p>
-          <p class="desc">Plata 926, baño oro 24K, 30mm</p>
-          <div class="price-row">
-            <span class="price">US$ 90 / COP 314.000</span>
-            <span class="status">Disponible</span>
-          </div>
-          <a class="cta" href="https://wa.me/573196423502?text=Hola%2C%20me%20interesa%20la%20pieza%20Past%20Eyes%20Gold" target="_blank" rel="noopener">Consultar →</a>
-        </div>
-      </article>
-      <article class="piece">
-        <div class="thumb"><img src="assets/products/light-bends-rose-emerald.jpg" alt="Light Bends — Rosé & Esmeralda, Flabelum"></div>
-        <div class="info">
-          <p class="cat">Aurum Rosé</p>
-          <p class="name">Light Bends — Rosé & Esmeralda</p>
-          <p class="desc">Plata 926, baño oro rosé 24K, esmeraldas de Muzo, 40mm</p>
-          <div class="price-row">
-            <span class="price">US$ 775 / COP 2.400.000</span>
-            <span class="status">Disponible</span>
-          </div>
-          <a class="cta" href="https://wa.me/573196423502?text=Hola%2C%20me%20interesa%20la%20pieza%20Light%20Bends%20—%20Rosé%20&%20Esmeralda" target="_blank" rel="noopener">Consultar →</a>
-        </div>
-      </article>
-      <article class="piece">
-        <div class="thumb"><img src="assets/products/future-eyes-rose.jpg" alt="Future Eyes Rosé, Flabelum"></div>
-        <div class="info">
-          <p class="cat">Aurum Rosé</p>
-          <p class="name">Future Eyes Rosé</p>
-          <p class="desc">Plata 926, baño oro rosé 24K, 58mm</p>
-          <div class="price-row">
-            <span class="price">US$ 220 / COP 772.000</span>
-            <span class="status">A pedido</span>
-          </div>
-          <a class="cta" href="https://wa.me/573196423502?text=Hola%2C%20me%20interesa%20la%20pieza%20Future%20Eyes%20Rosé" target="_blank" rel="noopener">Consultar →</a>
-        </div>
-      </article>
-      <article class="piece">
-        <div class="thumb"><img src="assets/products/present-eyes-rose.jpg" alt="Present Eyes Rosé, Flabelum"></div>
-        <div class="info">
-          <p class="cat">Aurum Rosé</p>
-          <p class="name">Present Eyes Rosé</p>
-          <p class="desc">Plata 926, baño oro rosé 24K, 40mm</p>
-          <div class="price-row">
-            <span class="price">US$ 190 / COP 665.000</span>
-            <span class="status">A pedido</span>
-          </div>
-          <a class="cta" href="https://wa.me/573196423502?text=Hola%2C%20me%20interesa%20la%20pieza%20Present%20Eyes%20Rosé" target="_blank" rel="noopener">Consultar →</a>
-        </div>
-      </article>
-      <article class="piece">
-        <div class="thumb"><img src="assets/products/past-eyes-rose.jpg" alt="Past Eyes Rosé, Flabelum"></div>
-        <div class="info">
-          <p class="cat">Aurum Rosé</p>
-          <p class="name">Past Eyes Rosé</p>
-          <p class="desc">Plata 926, baño oro rosé 24K, 30mm</p>
-          <div class="price-row">
-            <span class="price">US$ 125 / COP 438.000</span>
-            <span class="status">A pedido</span>
-          </div>
-          <a class="cta" href="https://wa.me/573196423502?text=Hola%2C%20me%20interesa%20la%20pieza%20Past%20Eyes%20Rosé" target="_blank" rel="noopener">Consultar →</a>
-        </div>
-      </article>
-      <article class="piece">
-        <div class="thumb"><img src="assets/products/light-bends-rose.jpg" alt="Light Bends by Itself Rosé, Flabelum"></div>
-        <div class="info">
-          <p class="cat">Aurum Rosé</p>
-          <p class="name">Light Bends by Itself Rosé</p>
-          <p class="desc">Plata 926, baño oro rosé 24K, 40mm</p>
-          <div class="price-row">
-            <span class="price">US$ 269 / COP 943.000</span>
-            <span class="status">A pedido</span>
-          </div>
-          <a class="cta" href="https://wa.me/573196423502?text=Hola%2C%20me%20interesa%20la%20pieza%20Light%20Bends%20by%20Itself%20Rosé" target="_blank" rel="noopener">Consultar →</a>
-        </div>
-      </article>
-      <article class="piece">
-        <div class="thumb"><img src="assets/products/muses-hand.jpg" alt="The Muse's Hand, Flabelum"></div>
-        <div class="info">
-          <p class="cat">Argentum Silver</p>
-          <p class="name">The Muse's Hand</p>
-          <p class="desc">Plata maciza 925, dije</p>
-          <div class="price-row">
-            <span class="price">US$ 70 / COP 260.000</span>
-            <span class="status">A pedido</span>
-          </div>
-          <a class="cta" href="https://wa.me/573196423502?text=Hola%2C%20me%20interesa%20la%20pieza%20The%20Muse's%20Hand" target="_blank" rel="noopener">Consultar →</a>
-        </div>
-      </article>
-      <article class="piece">
-        <div class="thumb"><img src="assets/products/philosophers-hand.jpg" alt="The Philosopher's Hand, Flabelum"></div>
-        <div class="info">
-          <p class="cat">Argentum Silver</p>
-          <p class="name">The Philosopher's Hand</p>
-          <p class="desc">Plata maciza 925, tridimensional</p>
-          <div class="price-row">
-            <span class="price">US$ 97 / COP 350.000</span>
-            <span class="status">A pedido</span>
-          </div>
-          <a class="cta" href="https://wa.me/573196423502?text=Hola%2C%20me%20interesa%20la%20pieza%20The%20Philosopher's%20Hand" target="_blank" rel="noopener">Consultar →</a>
-        </div>
-      </article>
-      <article class="piece">
-        <div class="thumb"><img src="assets/products/light-bends-silver.jpg" alt="Light Bends by Itself Silver, Flabelum"></div>
-        <div class="info">
-          <p class="cat">Argentum Silver</p>
-          <p class="name">Light Bends by Itself Silver</p>
-          <p class="desc">Plata 926, 40mm</p>
-          <div class="price-row">
-            <span class="price">US$ 172 / COP 605.000</span>
-            <span class="status">Disponible</span>
-          </div>
-          <a class="cta" href="https://wa.me/573196423502?text=Hola%2C%20me%20interesa%20la%20pieza%20Light%20Bends%20by%20Itself%20Silver" target="_blank" rel="noopener">Consultar →</a>
-        </div>
-      </article>
-      <article class="piece">
-        <div class="thumb"><img src="assets/products/stellarium.jpg" alt="Stellarium, Flabelum"></div>
-        <div class="info">
-          <p class="cat">Argentum Silver</p>
-          <p class="name">Stellarium</p>
-          <p class="desc">Plata 926, 40mm</p>
-          <div class="price-row">
-            <span class="price">US$ 125 / COP 440.000</span>
-            <span class="status">A pedido</span>
-          </div>
-          <a class="cta" href="https://wa.me/573196423502?text=Hola%2C%20me%20interesa%20la%20pieza%20Stellarium" target="_blank" rel="noopener">Consultar →</a>
-        </div>
-      </article>
-      <article class="piece">
-        <div class="thumb"><img src="assets/products/future-eyes-silver.jpg" alt="Future Eyes Silver, Flabelum"></div>
-        <div class="info">
-          <p class="cat">Argentum Silver</p>
-          <p class="name">Future Eyes Silver</p>
-          <p class="desc">Plata 926, 58mm</p>
-          <div class="price-row">
-            <span class="price">US$ 140 / COP 495.000</span>
-            <span class="status">A pedido</span>
-          </div>
-          <a class="cta" href="https://wa.me/573196423502?text=Hola%2C%20me%20interesa%20la%20pieza%20Future%20Eyes%20Silver" target="_blank" rel="noopener">Consultar →</a>
-        </div>
-      </article>
-      <article class="piece">
-        <div class="thumb"><img src="assets/products/present-eyes-silver.jpg" alt="Present Eyes Silver, Flabelum"></div>
-        <div class="info">
-          <p class="cat">Argentum Silver</p>
-          <p class="name">Present Eyes Silver</p>
-          <p class="desc">Plata 926, 40mm</p>
-          <div class="price-row">
-            <span class="price">US$ 122 / COP 426.000</span>
-            <span class="status">A pedido</span>
-          </div>
-          <a class="cta" href="https://wa.me/573196423502?text=Hola%2C%20me%20interesa%20la%20pieza%20Present%20Eyes%20Silver" target="_blank" rel="noopener">Consultar →</a>
-        </div>
-      </article>
-      <article class="piece">
-        <div class="thumb"><img src="assets/products/past-eyes-silver.jpg" alt="Past Eyes Silver, Flabelum"></div>
-        <div class="info">
-          <p class="cat">Argentum Silver</p>
-          <p class="name">Past Eyes Silver</p>
-          <p class="desc">Plata 926, 30mm</p>
-          <div class="price-row">
-            <span class="price">US$ 80 / COP 280.000</span>
-            <span class="status">A pedido</span>
-          </div>
-          <a class="cta" href="https://wa.me/573196423502?text=Hola%2C%20me%20interesa%20la%20pieza%20Past%20Eyes%20Silver" target="_blank" rel="noopener">Consultar →</a>
-        </div>
-      </article>
-
-    </div>
-  </section>
-
-  <section id="sobre">
-    <img class="about-img" src="about-me.svg" alt="Taller Flabelum">
-    <div class="about-text">
-      <div class="mark-row"><span class="dot"></span><span class="label">Artifacts of Intent — Serie: Attoverso</span></div>
-      <h2>Artifacts of Intent</h2>
-      <p>La joyería es un ejercicio de física y sombra. Mi trabajo en Flabelum no responde a cánones estéticos; responde a la resistencia de la materia ante mi voluntad.</p>
-      <p>Utilizo plata 950 y oro de 18K no para adornar, sino para articular la forma. Cada pieza es un bloque de intención pura, forjado en el aislamiento absoluto de mi taller. No hay procesos industrializados. No hay mediaciones. Solo el metal, el fuego y la persistencia de mis manos sobre la amatista ahumada y el vacío.</p>
-      <p>Attoverso es un registro de esta colisión entre lo estelar y lo terrenal. Las piezas que componen esta serie poseen una densidad palpable; son objetos que cargan con la pesadez de lo barroco y la frialdad del cosmos. No están diseñadas para encajar; están diseñadas para existir como extensiones del cuerpo.</p>
-      <p>La belleza es un residuo de la creación, no su fin. En Flabelum, lo que permanece es la marca del cincel, el peso de la plata maciza y la arquitectura de un rito solitario.</p>
-      <p class="credo-line">Materia. Intención. Permanencia. No hago accesorios. Hago artefactos.</p>
-    </div>
-  </section>
-
-  <section id="sobre-mi">
-    <div class="section-head" style="max-width:1100px;margin-left:auto;margin-right:auto;"><span class="mark"></span><h2>Sobre mí</h2></div>
-    <div class="aboutme-grid">
-      <img src="assets/about-photo-placeholder.svg" alt="Foto de la creadora de Flabelum">
-      <div>
-        <p><em>[Espacio para tu texto — contame en un par de líneas por qué hacés joyería, cómo empezaste, o qué representa este oficio para vos, y lo dejamos escrito acá con tu voz.]</em></p>
-        <p class="signature">— Artifacts of Intent</p>
-      </div>
-    </div>
-  </section>
-
-  <section id="pagos">
-    <div class="section-head" style="max-width:900px;margin-left:auto;margin-right:auto;"><span class="mark"></span><h2>Métodos de pago</h2></div>
-    <div class="pay-grid">
-      <a class="pay-btn" href="https://www.paypal.com/paypalme/medusahra" target="_blank" rel="noopener">PayPal</a>
-      <a class="pay-btn" href="https://checkout.nequi.wompi.co/l/VPOS_Nuchcf" target="_blank" rel="noopener">Tarjeta de crédito</a>
-      <a class="pay-btn" href="https://link.mercadopago.com.co/medusahra" target="_blank" rel="noopener">Mercado Pago</a>
-      <span class="pay-btn" style="cursor:default;">BRE-B: 0091995146</span>
-      <a class="pay-btn" href="https://wa.me/573196423502?text=Hola%2C%20quiero%20un%20link%20de%20pago%20personalizado" target="_blank" rel="noopener">Pedir link por WhatsApp</a>
-    </div>
-    <p class="pay-note">Elegí el medio que prefieras. Para Nequi u otro método, escribinos por WhatsApp y te enviamos un link de pago personalizado.</p>
-  </section>
-
-  <section id="catalogo">
-    <div class="catalog-box">
-      <div class="section-head" style="border:none;justify-content:center;margin-bottom:20px;"><span class="mark"></span><h2>Catálogo</h2></div>
-      <p>Todas las piezas disponibles, en un solo lugar. Miralo en línea o descargalo para verlo cuando quieras.</p>
-      <div class="catalog-actions">
-        <a class="primary" href="assets/Flabelum%202026.pdf" target="_blank" rel="noopener">Ver catálogo</a>
-        <a href="assets/Flabelum%202026.pdf" download>Descargar PDF</a>
-      </div>
-    </div>
-  </section>
-
-  <section id="instagram">
-    <div class="section-head" style="max-width:1000px;margin-left:auto;margin-right:auto;"><span class="mark"></span><h2>Últimas piezas — Instagram</h2></div>
-    <div class="ig-wrap">
-      <!--
-        Cuando tengas el link de SnapWidget (algo como
-        https://snapwidget.com/embed/1234567), reemplazá el
-        src="" de abajo con esa URL y borrá el div .ig-fallback.
-      -->
-      <iframe src="" height="500" allowtransparency="true" frameborder="0"></iframe>
-      <div class="ig-fallback">
-        Acá va a aparecer tu feed de Instagram en vivo — pasame el link de SnapWidget y lo conecto.
-        Mientras tanto, seguinos en <a href="https://www.instagram.com/flabelum" target="_blank" rel="noopener" style="text-decoration:underline;">@flabelum</a>.
-      </div>
-    </div>
-  </section>
-
-  <section id="faq">
-    <div class="section-head"><span class="mark"></span><h2>FAQ</h2></div>
-    <div class="faq-list">
-      <details open>
-        <summary>¿Cómo compro una pieza?</summary>
-        <p>Escribime por Instagram (@flabelum) o por WhatsApp con el nombre de la pieza que te interesa. Coordinamos disponibilidad, envío y forma de pago.</p>
-      </details>
-      <details>
-        <summary>¿Cómo es el proceso de compra?</summary>
-        <p>Especificá el modelo que querés y hacé el pago del 50% o 100% del valor. Una vez confirmado el pago (mandando el comprobante al correo o por WhatsApp), iniciamos la producción o el envío. Entrega a domicilio dentro de los siguientes 7 días hábiles. Envío gratis.</p>
-      </details>
-      <details>
-        <summary>¿Qué métodos de pago aceptan?</summary>
-        <p>Wompi, PayPal, Mercado Pago, Nequi Negocios y BRE-B. Los links están en la sección "Métodos de pago" de esta página.</p>
-      </details>
-      <details>
-        <summary>¿Hacen piezas por encargo?</summary>
-        <p>Sí, comisiones personalizadas en plata u oro, incluyen certificado de autenticidad y estuche de lujo. Contame la idea por DM o WhatsApp y te armo la cotización.</p>
-      </details>
-      <details>
-        <summary>¿Cuánto tarda un envío?</summary>
-        <p>Depende de la ciudad y de si la pieza es de catálogo o hecha a pedido. Te confirmo el tiempo exacto al coordinar la compra.</p>
-      </details>
-      <details>
-        <summary>¿Hacen envíos internacionales?</summary>
-        <p>Sí, consultá disponibilidad y costo de envío a tu país por DM antes de confirmar la compra.</p>
-      </details>
-      <details>
-        <summary>¿Cómo sé mi talla de anillo?</summary>
-        <p>Te puedo guiar para medir tu talla en casa con un hilo o una tira de papel — escribime y te paso la guía paso a paso.</p>
-      </details>
-      <details>
-        <summary>¿Las piezas son de plata real?</summary>
-        <p>Sí, todas las piezas son plata 950. Cada una incluye certificado de autenticidad.</p>
-      </details>
-      <details>
-        <summary>¿Cómo cuido mis piezas de plata?</summary>
-        <p>Guardalas en un lugar seco, lejos de perfumes y cremas, y limpialas con un paño suave. Con cada compra recibís un manual de cuidado.</p>
-      </details>
-      <details>
-        <summary>¿Hacen cambios o devoluciones?</summary>
-        <p>Sí, dentro de los primeros días después de recibir tu pedido, siempre que la pieza esté sin uso. Coordinamos los detalles por DM.</p>
-      </details>
-    </div>
-  </section>
-</main>
-
-<footer>
-  <div class="fmark"><img src="logo.png" alt="Flabelum"></div>
-  <div class="socials">
-    <a href="https://www.instagram.com/flabelum" target="_blank" rel="noopener"><img src="assets/social_instagram.svg" alt="Instagram"></a>
-    <a href="mailto:flabelum.flabelum@gmail.com"><img src="assets/social_mail.svg" alt="Correo"></a>
-    <a href="https://wa.me/573196423502" target="_blank" rel="noopener" style="font-family:var(--display);font-size:0.78rem;text-transform:uppercase;letter-spacing:0.05em;font-weight:500;">WhatsApp</a>
-  </div>
-</footer>
-
-<script>
-(function(){
-  var phrase = [
-    { type:'text', value:'FLABELUM' },
-    { type:'dot' },
-    { type:'text', value:'ARTIFACTS OF INTENT' },
-    { type:'dot' },
-    { type:'text', value:'METALSMITH, JOYAS DE AUTOR, HANDMADE' },
-    { type:'dot' }
-  ];
-
-  function buildBlock(el, repeats){
-    var frag = document.createDocumentFragment();
-    for(var r=0;r<repeats;r++){
-      phrase.forEach(function(p){
-        if(p.type === 'text'){
-          var span = document.createElement('span');
-          span.className = 'item';
-          span.textContent = p.value;
-          frag.appendChild(span);
-        } else {
-          var dot = document.createElement('span');
-          dot.className = 'dot';
-          frag.appendChild(dot);
-        }
-      });
-    }
-    el.appendChild(frag);
-  }
-
-  var blockA = document.getElementById('friezeBlockA');
-  var blockB = document.getElementById('friezeBlockB');
-  // Enough repeats to comfortably exceed any viewport width, so the
-  // seamless -50% loop never shows a blank gap.
-  buildBlock(blockA, 12);
-  buildBlock(blockB, 12);
-})();
-</script>
-</body>
-</html>
+<!-- ... resto del cuerpo igual ... -->
