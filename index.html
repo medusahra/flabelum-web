@@ -33,8 +33,12 @@
     padding:18px 5vw;background:var(--paper);
     border-bottom:2px solid var(--ink);
   }
-  .logo-mark{display:flex;align-items:center;gap:10px;text-decoration:none;}
-  .logo-mark img{height:36px;width:auto;}
+  .logo-mark{display:flex;align-items:center;gap:12px;text-decoration:none;}
+  .logo-armillary{
+    position:relative;width:40px;height:40px;flex:none;
+    perspective:220px;
+  }
+  .logo-mark img{height:36px;width:auto;position:relative;z-index:1;}
   nav.links{display:flex;gap:30px;font-family:var(--display);font-size:0.82rem;letter-spacing:0.04em;text-transform:uppercase;font-weight:500;}
   nav.links a{text-decoration:none;color:var(--ink);position:relative;padding-bottom:3px;}
   nav.links a::after{
@@ -57,7 +61,7 @@
   .frieze-block .dot{display:inline-block;width:6px;height:6px;border-radius:50%;background:var(--paper);flex:none;}
   @keyframes scroll-left{0%{transform:translateX(0);}100%{transform:translateX(-50%);}}
 
-  /* ---------- Hero — geometric, monochrome, in the logo's spirit ---------- */
+  /* ---------- Hero — esfera armilar (Copérnico) ---------- */
   .hero{
     position:relative;overflow:hidden;
     display:grid;grid-template-columns:1fr 1fr;align-items:center;
@@ -66,26 +70,73 @@
   }
   .hero-mark-wrap{
     position:relative;display:flex;justify-content:center;align-items:center;
+    width:min(48vw,500px);height:min(48vw,500px);margin:0 auto;
+    perspective:900px;
   }
-  .hero-mark-wrap .ring{position:absolute;top:50%;left:50%;transform-origin:center;}
-  .hero-mark-wrap .ring-outer{
-    width:min(46vw,480px);height:min(46vw,480px);margin:calc(min(46vw,480px) / -2) 0 0 calc(min(46vw,480px) / -2);
-    animation:spin-cw 70s linear infinite;
+  .armillary{
+    position:absolute;inset:0;transform-style:preserve-3d;
+    animation:armillary-drift 26s ease-in-out infinite;
   }
-  .hero-mark-wrap .ring-mid{
-    width:min(36vw,380px);height:min(36vw,380px);margin:calc(min(36vw,380px) / -2) 0 0 calc(min(36vw,380px) / -2);
-    animation:spin-ccw 46s linear infinite;
+  .armillary--mini{inset:2px;animation-duration:18s;}
+  .armillary-ring-wrap{
+    position:absolute;top:50%;left:50%;width:100%;height:100%;
+    margin:-50% 0 0 -50%;transform-style:preserve-3d;
   }
-  .hero-mark-wrap .ring-inner{
-    width:min(26vw,280px);height:min(26vw,280px);margin:calc(min(26vw,280px) / -2) 0 0 calc(min(26vw,280px) / -2);
-    animation:spin-cw 28s linear infinite;
+  .armillary-ring-spin{width:100%;height:100%;transform-style:preserve-3d;}
+  .armillary-ring{
+    position:absolute;inset:0;border:1px solid var(--ink);border-radius:50%;
+    box-sizing:border-box;
   }
+  .armillary-ring::before,
+  .armillary-ring::after{
+    content:"";position:absolute;width:4px;height:4px;border-radius:50%;background:var(--ink);
+  }
+  .armillary-ring::before{top:-2px;left:50%;margin-left:-2px;}
+  .armillary-ring::after{bottom:-2px;left:50%;margin-left:-2px;opacity:0.55;}
+  .ring-equator-wrap{transform:rotateX(90deg);}
+  .ring-equator-wrap .armillary-ring-spin{animation:arm-spin-cw 72s linear infinite;}
+  .ring-meridian-wrap .armillary-ring-spin{animation:arm-spin-ccw 50s linear infinite;}
+  .ring-ecliptic-wrap{transform:rotateX(66.5deg);}
+  .ring-ecliptic-wrap .armillary-ring-spin{animation:arm-spin-cw 38s linear infinite;}
+  .ring-colure-wrap{transform:rotateY(90deg);}
+  .ring-colure-wrap .armillary-ring-spin{animation:arm-spin-ccw 56s linear infinite;}
+  .ring-tropic-wrap{
+    transform:rotateX(90deg) rotateZ(23.5deg);width:108%;height:108%;
+    margin:-54% 0 0 -54%;opacity:0.42;
+  }
+  .ring-tropic-wrap .armillary-ring-spin{animation:arm-spin-cw 94s linear infinite reverse;}
+  .ring-ecliptic-wrap .armillary-ring{border-style:dashed;border-width:0.75px;}
+  .armillary-axis{
+    position:absolute;top:50%;left:50%;width:1px;height:112%;
+    margin:-56% 0 0 -0.5px;background:var(--ink);opacity:0.35;
+    transform:rotateX(90deg);
+  }
+  .armillary-axis::before,
+  .armillary-axis::after{
+    content:"";position:absolute;left:50%;width:5px;height:5px;margin-left:-2.5px;
+    border-radius:50%;background:var(--ink);
+  }
+  .armillary-axis::before{top:-2.5px;}
+  .armillary-axis::after{bottom:-2.5px;}
+  .armillary-globe{
+    position:absolute;top:50%;left:50%;width:9px;height:9px;margin:-4.5px 0 0 -4.5px;
+    border:1px solid var(--ink);border-radius:50%;background:var(--paper);
+  }
+  .armillary--mini .armillary-ring{border-width:0.75px;}
+  .armillary--mini .armillary-ring::before,
+  .armillary--mini .armillary-ring::after{width:2px;height:2px;margin-left:-1px;}
+  .armillary--mini .armillary-globe{width:4px;height:4px;margin:-2px 0 0 -2px;}
+  .armillary--mini .armillary-axis{width:0.75px;height:108%;}
   .hero-mark-wrap img.logo-big{
-    position:relative;width:min(22vw,220px);
+    position:relative;z-index:2;width:min(22vw,220px);
     animation:breathe 4.5s ease-in-out infinite;
   }
-  @keyframes spin-cw{from{transform:rotate(0deg);}to{transform:rotate(360deg);}}
-  @keyframes spin-ccw{from{transform:rotate(0deg);}to{transform:rotate(-360deg);}}
+  @keyframes arm-spin-cw{from{transform:rotateZ(0deg);}to{transform:rotateZ(360deg);}}
+  @keyframes arm-spin-ccw{from{transform:rotateZ(0deg);}to{transform:rotateZ(-360deg);}}
+  @keyframes armillary-drift{
+    0%,100%{transform:rotateX(14deg) rotateY(-20deg);}
+    50%{transform:rotateX(20deg) rotateY(22deg);}
+  }
   @keyframes breathe{0%,100%{transform:scale(1);}50%{transform:scale(1.035);}}
   .hero-copy{position:relative;z-index:2;}
   .hero-copy .brand{
@@ -124,8 +175,14 @@
   }
   .piece{background:var(--surface);transition:background .2s ease;}
   .piece:hover{background:var(--paper);}
-  .piece .thumb{aspect-ratio:1/1;overflow:hidden;border-bottom:2px solid var(--ink);}
-  .piece .thumb img{width:100%;height:100%;object-fit:cover;}
+  .piece .thumb{
+    aspect-ratio:1/1;overflow:hidden;border-bottom:2px solid var(--ink);
+    cursor:zoom-in;border-left:none;border-right:none;border-top:none;padding:0;
+    background:none;width:100%;display:block;text-align:inherit;
+  }
+  .piece .thumb:focus-visible{outline:2px solid var(--ink);outline-offset:-2px;}
+  .piece .thumb img{width:100%;height:100%;object-fit:cover;transition:transform .35s ease;}
+  .piece .thumb:hover img{transform:scale(1.04);}
   .piece .info{padding:18px 20px 22px;}
   .piece .info .cat{font-family:var(--display);font-size:0.68rem;text-transform:uppercase;letter-spacing:0.1em;color:var(--ink-soft);margin:0 0 6px;}
   .piece .info .name{font-family:var(--display);font-weight:700;font-size:1.02rem;letter-spacing:0.01em;margin:0 0 6px;text-transform:uppercase;}
@@ -137,6 +194,48 @@
     font-family:var(--display);font-size:0.74rem;text-transform:uppercase;letter-spacing:0.06em;font-weight:500;
     text-decoration:none;color:var(--ink);border-bottom:2px solid var(--ink);padding-bottom:2px;
   }
+
+  /* ---------- Lightbox tienda ---------- */
+  .piece-lightbox{
+    position:fixed;inset:0;z-index:200;display:flex;align-items:center;justify-content:center;
+    padding:24px;opacity:0;visibility:hidden;transition:opacity .28s ease, visibility .28s ease;
+  }
+  .piece-lightbox.is-open{opacity:1;visibility:visible;}
+  .piece-lightbox-backdrop{
+    position:absolute;inset:0;background:rgba(0,0,0,0.78);border:none;cursor:pointer;
+  }
+  .piece-lightbox-panel{
+    position:relative;z-index:1;display:grid;grid-template-columns:1.05fr 0.95fr;
+    width:min(960px,100%);max-height:min(90vh,760px);background:var(--paper);
+    border:2px solid var(--ink);overflow:auto;transform:scale(0.96);
+    transition:transform .28s ease;
+  }
+  .piece-lightbox.is-open .piece-lightbox-panel{transform:scale(1);}
+  .piece-lightbox-image{
+    background:var(--surface);border-right:2px solid var(--ink);
+    display:flex;align-items:center;justify-content:center;min-height:280px;
+  }
+  .piece-lightbox-image img{width:100%;height:100%;max-height:min(70vh,620px);object-fit:contain;}
+  .piece-lightbox-info{padding:28px 26px 30px;}
+  .piece-lightbox-info .cat{font-family:var(--display);font-size:0.68rem;text-transform:uppercase;letter-spacing:0.1em;color:var(--ink-soft);margin:0 0 8px;}
+  .piece-lightbox-info .name{font-family:var(--display);font-weight:700;font-size:1.35rem;letter-spacing:0.01em;margin:0 0 10px;text-transform:uppercase;}
+  .piece-lightbox-info .desc{font-family:var(--elegant);font-size:1.15rem;color:var(--ink-soft);margin:0 0 18px;font-style:italic;}
+  .piece-lightbox-info .price-row{display:flex;align-items:center;justify-content:space-between;gap:12px;margin:0 0 22px;flex-wrap:wrap;}
+  .piece-lightbox-info .price{font-family:var(--display);font-weight:700;font-size:1rem;}
+  .piece-lightbox-info .status{font-family:var(--display);font-size:0.65rem;text-transform:uppercase;letter-spacing:0.06em;border:1px solid var(--ink);padding:4px 10px;color:var(--ink-soft);}
+  .piece-lightbox-info .cta{
+    display:inline-block;font-family:var(--display);font-size:0.78rem;text-transform:uppercase;
+    letter-spacing:0.06em;font-weight:500;text-decoration:none;color:var(--ink);
+    border:2px solid var(--ink);padding:12px 18px;transition:background .2s ease, color .2s ease;
+  }
+  .piece-lightbox-info .cta:hover{background:var(--ink);color:var(--paper);}
+  .piece-lightbox-close{
+    position:absolute;top:10px;right:10px;z-index:2;width:36px;height:36px;
+    border:2px solid var(--ink);background:var(--paper);color:var(--ink);cursor:pointer;
+    font-family:var(--display);font-size:1.2rem;line-height:1;
+  }
+  .piece-lightbox-close:hover{background:var(--ink);color:var(--paper);}
+  body.lightbox-open{overflow:hidden;}
 
   /* ---------- About / Sobre la marca ---------- */
   #sobre{
@@ -230,12 +329,16 @@
   footer .socials a{text-decoration:none;color:var(--ink);display:flex;align-items:center;}
   footer .socials img{height:20px;width:auto;}
 
-  @media (prefers-reduced-motion: reduce){.frieze-inner, .arrow-cue svg, .hero-mark-wrap .ring, .hero-mark-wrap img.logo-big{animation:none !important;}}
+  @media (prefers-reduced-motion: reduce){
+    .frieze-inner, .arrow-cue svg, .armillary, .armillary-ring-spin, .hero-mark-wrap img.logo-big{animation:none !important;}
+  }
   @media (max-width:820px){
     .hero{grid-template-columns:1fr;text-align:center;padding-top:50px;}
     .hero-copy .credo{margin:0 auto;}
     .hero-mark-wrap{order:-1;margin-bottom:20px;}
     #sobre, .aboutme-grid{grid-template-columns:1fr;}
+    .piece-lightbox-panel{grid-template-columns:1fr;}
+    .piece-lightbox-image{border-right:none;border-bottom:2px solid var(--ink);min-height:220px;}
   }
   @media (max-width:520px){nav.links{display:none;}}
 </style>
@@ -244,6 +347,15 @@
 
 <header class="site-nav">
   <a href="#top" class="logo-mark" aria-label="Flabelum — inicio">
+    <div class="logo-armillary" aria-hidden="true">
+      <div class="armillary armillary--mini">
+        <div class="armillary-axis"></div>
+        <div class="armillary-globe"></div>
+        <div class="armillary-ring-wrap ring-equator-wrap"><div class="armillary-ring-spin"><div class="armillary-ring"></div></div></div>
+        <div class="armillary-ring-wrap ring-meridian-wrap"><div class="armillary-ring-spin"><div class="armillary-ring"></div></div></div>
+        <div class="armillary-ring-wrap ring-ecliptic-wrap"><div class="armillary-ring-spin"><div class="armillary-ring"></div></div></div>
+      </div>
+    </div>
     <img src="logo.png" alt="Flabelum">
   </a>
   <nav class="links">
@@ -268,22 +380,18 @@
     <div class="hero-copy">
       <p class="brand">Flabelum</p>
       <p class="tagline">Artifacts of Intent</p>
-      <p class="credo">Joyas de autor forjadas a mano</p>
+      <p class="credo">Joyas de autor forjadas a mano.</p>
     </div>
     <div class="hero-mark-wrap">
-      <svg class="ring ring-outer" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
-        <circle cx="100" cy="100" r="96" fill="none" stroke="#000" stroke-width="0.75"/>
-        <circle cx="100" cy="4" r="2.2" fill="#000"/>
-        <circle cx="196" cy="100" r="1.4" fill="#000"/>
-        <circle cx="30" cy="166" r="1.4" fill="#000"/>
-      </svg>
-      <svg class="ring ring-mid" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
-        <circle cx="100" cy="100" r="96" fill="none" stroke="#000" stroke-width="1" stroke-dasharray="0.5 7"/>
-      </svg>
-      <svg class="ring ring-inner" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
-        <circle cx="100" cy="100" r="96" fill="none" stroke="#000" stroke-width="0.6"/>
-        <circle cx="4" cy="100" r="1.8" fill="#000"/>
-      </svg>
+      <div class="armillary" aria-hidden="true">
+        <div class="armillary-axis"></div>
+        <div class="armillary-globe"></div>
+        <div class="armillary-ring-wrap ring-equator-wrap"><div class="armillary-ring-spin"><div class="armillary-ring"></div></div></div>
+        <div class="armillary-ring-wrap ring-meridian-wrap"><div class="armillary-ring-spin"><div class="armillary-ring"></div></div></div>
+        <div class="armillary-ring-wrap ring-ecliptic-wrap"><div class="armillary-ring-spin"><div class="armillary-ring"></div></div></div>
+        <div class="armillary-ring-wrap ring-colure-wrap"><div class="armillary-ring-spin"><div class="armillary-ring"></div></div></div>
+        <div class="armillary-ring-wrap ring-tropic-wrap"><div class="armillary-ring-spin"><div class="armillary-ring"></div></div></div>
+      </div>
       <img class="logo-big" src="logo.png" alt="Flabelum">
     </div>
   </section>
@@ -300,7 +408,7 @@
     <div class="section-head"><span class="mark"></span><h2>Tienda</h2></div>
     <div class="grid">
       <article class="piece">
-        <div class="thumb"><img src="assets/eye-of-future.jpg" alt="Eye of Future, Flabelum"></div>
+        <div class="thumb"><img src="assets/products/eye-of-future.jpg" alt="Eye of Future, Flabelum"></div>
         <div class="info">
           <p class="cat">Aurum Gold</p>
           <p class="name">Eye of Future</p>
@@ -313,7 +421,7 @@
         </div>
       </article>
       <article class="piece">
-        <div class="thumb"><img src="assets/future-eyes-gold.jpg" alt="Future Eyes Gold, Flabelum"></div>
+        <div class="thumb"><img src="assets/products/future-eyes-gold.jpg" alt="Future Eyes Gold, Flabelum"></div>
         <div class="info">
           <p class="cat">Aurum Gold</p>
           <p class="name">Future Eyes Gold</p>
@@ -326,7 +434,7 @@
         </div>
       </article>
       <article class="piece">
-        <div class="thumb"><img src="assets/present-eyes-gold.jpg" alt="Present Eyes Gold, Flabelum"></div>
+        <div class="thumb"><img src="assets/products/present-eyes-gold.jpg" alt="Present Eyes Gold, Flabelum"></div>
         <div class="info">
           <p class="cat">Aurum Gold</p>
           <p class="name">Present Eyes Gold</p>
@@ -339,7 +447,7 @@
         </div>
       </article>
       <article class="piece">
-        <div class="thumb"><img src="assets/past-eyes-gold.jpg" alt="Past Eyes Gold, Flabelum"></div>
+        <div class="thumb"><img src="assets/products/past-eyes-gold.jpg" alt="Past Eyes Gold, Flabelum"></div>
         <div class="info">
           <p class="cat">Aurum Gold</p>
           <p class="name">Past Eyes Gold</p>
@@ -352,7 +460,7 @@
         </div>
       </article>
       <article class="piece">
-        <div class="thumb"><img src="assets/light-bends-rose-emerald.jpg" alt="Light Bends — Rosé & Esmeralda, Flabelum"></div>
+        <div class="thumb"><img src="assets/products/light-bends-rose-emerald.jpg" alt="Light Bends — Rosé & Esmeralda, Flabelum"></div>
         <div class="info">
           <p class="cat">Aurum Rosé</p>
           <p class="name">Light Bends — Rosé & Esmeralda</p>
@@ -365,7 +473,7 @@
         </div>
       </article>
       <article class="piece">
-        <div class="thumb"><img src="assets/future-eyes-rose.jpg" alt="Future Eyes Rosé, Flabelum"></div>
+        <div class="thumb"><img src="assets/products/future-eyes-rose.jpg" alt="Future Eyes Rosé, Flabelum"></div>
         <div class="info">
           <p class="cat">Aurum Rosé</p>
           <p class="name">Future Eyes Rosé</p>
@@ -378,7 +486,7 @@
         </div>
       </article>
       <article class="piece">
-        <div class="thumb"><img src="assets/present-eyes-rose.jpg" alt="Present Eyes Rosé, Flabelum"></div>
+        <div class="thumb"><img src="assets/products/present-eyes-rose.jpg" alt="Present Eyes Rosé, Flabelum"></div>
         <div class="info">
           <p class="cat">Aurum Rosé</p>
           <p class="name">Present Eyes Rosé</p>
@@ -391,7 +499,7 @@
         </div>
       </article>
       <article class="piece">
-        <div class="thumb"><img src="assets/past-eyes-rose.jpg" alt="Past Eyes Rosé, Flabelum"></div>
+        <div class="thumb"><img src="assets/products/past-eyes-rose.jpg" alt="Past Eyes Rosé, Flabelum"></div>
         <div class="info">
           <p class="cat">Aurum Rosé</p>
           <p class="name">Past Eyes Rosé</p>
@@ -404,7 +512,7 @@
         </div>
       </article>
       <article class="piece">
-        <div class="thumb"><img src="assets/light-bends-rose.jpg" alt="Light Bends by Itself Rosé, Flabelum"></div>
+        <div class="thumb"><img src="assets/products/light-bends-rose.jpg" alt="Light Bends by Itself Rosé, Flabelum"></div>
         <div class="info">
           <p class="cat">Aurum Rosé</p>
           <p class="name">Light Bends by Itself Rosé</p>
@@ -417,7 +525,7 @@
         </div>
       </article>
       <article class="piece">
-        <div class="thumb"><img src="assets/muses-hand.jpg" alt="The Muse's Hand, Flabelum"></div>
+        <div class="thumb"><img src="assets/products/muses-hand.jpg" alt="The Muse's Hand, Flabelum"></div>
         <div class="info">
           <p class="cat">Argentum Silver</p>
           <p class="name">The Muse's Hand</p>
@@ -430,7 +538,7 @@
         </div>
       </article>
       <article class="piece">
-        <div class="thumb"><img src="assets/philosophers-hand.jpg" alt="The Philosopher's Hand, Flabelum"></div>
+        <div class="thumb"><img src="assets/products/philosophers-hand.jpg" alt="The Philosopher's Hand, Flabelum"></div>
         <div class="info">
           <p class="cat">Argentum Silver</p>
           <p class="name">The Philosopher's Hand</p>
@@ -443,7 +551,7 @@
         </div>
       </article>
       <article class="piece">
-        <div class="thumb"><img src="assets/light-bends-silver.jpg" alt="Light Bends by Itself Silver, Flabelum"></div>
+        <div class="thumb"><img src="assets/products/light-bends-silver.jpg" alt="Light Bends by Itself Silver, Flabelum"></div>
         <div class="info">
           <p class="cat">Argentum Silver</p>
           <p class="name">Light Bends by Itself Silver</p>
@@ -456,7 +564,7 @@
         </div>
       </article>
       <article class="piece">
-        <div class="thumb"><img src="assets/stellarium.jpg" alt="Stellarium, Flabelum"></div>
+        <div class="thumb"><img src="assets/products/stellarium.jpg" alt="Stellarium, Flabelum"></div>
         <div class="info">
           <p class="cat">Argentum Silver</p>
           <p class="name">Stellarium</p>
@@ -469,7 +577,7 @@
         </div>
       </article>
       <article class="piece">
-        <div class="thumb"><img src="assets/future-eyes-silver.jpg" alt="Future Eyes Silver, Flabelum"></div>
+        <div class="thumb"><img src="assets/products/future-eyes-silver.jpg" alt="Future Eyes Silver, Flabelum"></div>
         <div class="info">
           <p class="cat">Argentum Silver</p>
           <p class="name">Future Eyes Silver</p>
@@ -482,7 +590,7 @@
         </div>
       </article>
       <article class="piece">
-        <div class="thumb"><img src="assets/present-eyes-silver.jpg" alt="Present Eyes Silver, Flabelum"></div>
+        <div class="thumb"><img src="assets/products/present-eyes-silver.jpg" alt="Present Eyes Silver, Flabelum"></div>
         <div class="info">
           <p class="cat">Argentum Silver</p>
           <p class="name">Present Eyes Silver</p>
@@ -495,7 +603,7 @@
         </div>
       </article>
       <article class="piece">
-        <div class="thumb"><img src="assets/past-eyes-silver.jpg" alt="Past Eyes Silver, Flabelum"></div>
+        <div class="thumb"><img src="assets/products/past-eyes-silver.jpg" alt="Past Eyes Silver, Flabelum"></div>
         <div class="info">
           <p class="cat">Argentum Silver</p>
           <p class="name">Past Eyes Silver</p>
@@ -529,7 +637,7 @@
     <div class="aboutme-grid">
       <img src="assets/about-photo-placeholder.svg" alt="Foto de la creadora de Flabelum">
       <div>
-        <p><em>Espacio para mi texto</em></p>
+        <p><em>[Espacio para tu texto — contame en un par de líneas por qué hacés joyería, cómo empezaste, o qué representa este oficio para vos, y lo dejamos escrito acá con tu voz.]</em></p>
         <p class="signature">— Artifacts of Intent</p>
       </div>
     </div>
@@ -544,16 +652,16 @@
       <span class="pay-btn" style="cursor:default;">BRE-B: 0091995146</span>
       <a class="pay-btn" href="https://wa.me/573196423502?text=Hola%2C%20quiero%20un%20link%20de%20pago%20personalizado" target="_blank" rel="noopener">Pedir link por WhatsApp</a>
     </div>
-    <p class="pay-note">Elige el medio que prefieras. Escríbeme por WhatsApp y te envío un link de pago personalizado.</p>
+    <p class="pay-note">Elegí el medio que prefieras. Para Nequi u otro método, escribinos por WhatsApp y te enviamos un link de pago personalizado.</p>
   </section>
 
   <section id="catalogo">
     <div class="catalog-box">
       <div class="section-head" style="border:none;justify-content:center;margin-bottom:20px;"><span class="mark"></span><h2>Catálogo</h2></div>
-      <p>Algunas de las piezas de la colección Attoverso disponibles, en un solo lugar. Míralo en línea o descárgalo para verlo cuando quieras.</p>
+      <p>Todas las piezas disponibles, en un solo lugar. Miralo en línea o descargalo para verlo cuando quieras.</p>
       <div class="catalog-actions">
-        <a class="primary" href="assets/Flabelum%202026.pdf" target="_blank" rel="noopener">Ver catálogo</a>
-        <a href="assets/Flabelum%202026.pdf" download>Descargar PDF</a>
+        <a class="primary" href="assets/catalogo-flabelum.pdf" target="_blank" rel="noopener">Ver catálogo</a>
+        <a href="assets/catalogo-flabelum.pdf" download>Descargar PDF</a>
       </div>
     </div>
   </section>
@@ -568,8 +676,8 @@
       -->
       <iframe src="" height="500" allowtransparency="true" frameborder="0"></iframe>
       <div class="ig-fallback">
-        Acá va a aparecer tu feed de Instagram en vivo — pásame el link de SnapWidget y lo conecto.
-        Mientras tanto, síguenos en <a href="https://www.instagram.com/flabelum" target="_blank" rel="noopener" style="text-decoration:underline;">@flabelum</a>.
+        Acá va a aparecer tu feed de Instagram en vivo — pasame el link de SnapWidget y lo conecto.
+        Mientras tanto, seguinos en <a href="https://www.instagram.com/flabelum" target="_blank" rel="noopener" style="text-decoration:underline;">@flabelum</a>.
       </div>
     </div>
   </section>
@@ -579,47 +687,65 @@
     <div class="faq-list">
       <details open>
         <summary>¿Cómo compro una pieza?</summary>
-        <p>Escríbeme por Instagram (@flabelum) o por WhatsApp con el nombre de la pieza que te interesa. Coordinamos disponibilidad, envío y forma de pago.</p>
+        <p>Escribime por Instagram (@flabelum) o por WhatsApp con el nombre de la pieza que te interesa. Coordinamos disponibilidad, envío y forma de pago.</p>
       </details>
       <details>
         <summary>¿Cómo es el proceso de compra?</summary>
-        <p>Especifica el modelo que quieres y haz el pago del 50% o 100% del valor. Una vez confirmado el pago (mandando el comprobante al correo o por WhatsApp), inicio la producción o el envío. Entrega a domicilio dentro de los siguientes 7 días hábiles. Envío gratuito en Bogotá D.C.</p>
+        <p>Especificá el modelo que querés y hacé el pago del 50% o 100% del valor. Una vez confirmado el pago (mandando el comprobante al correo o por WhatsApp), iniciamos la producción o el envío. Entrega a domicilio dentro de los siguientes 7 días hábiles. Envío gratis.</p>
       </details>
       <details>
         <summary>¿Qué métodos de pago aceptan?</summary>
-        <p>Wompi, PayPal, Mercado Pago, Link personalizado y BRE-B. Los links están en la sección "Métodos de pago" de esta página.</p>
+        <p>Wompi, PayPal, Mercado Pago, Nequi Negocios y BRE-B. Los links están en la sección "Métodos de pago" de esta página.</p>
       </details>
       <details>
         <summary>¿Hacen piezas por encargo?</summary>
-        <p>Sí, comisiones personalizadas en plata u oro, incluyen certificado de autenticidad y estuche de lujo. Cuéntame la idea por DM o WhatsApp y te armo la cotización.</p>
+        <p>Sí, comisiones personalizadas en plata u oro, incluyen certificado de autenticidad y estuche de lujo. Contame la idea por DM o WhatsApp y te armo la cotización.</p>
       </details>
       <details>
         <summary>¿Cuánto tarda un envío?</summary>
-        <p>Depende de la ciudad y de si la pieza es de catálogo o hecha bajo pedido. Te confirmo el tiempo exacto al coordinar la compra.</p>
+        <p>Depende de la ciudad y de si la pieza es de catálogo o hecha a pedido. Te confirmo el tiempo exacto al coordinar la compra.</p>
       </details>
       <details>
         <summary>¿Hacen envíos internacionales?</summary>
-        <p>Sí, por DHL, consulta disponibilidad y costo de envío a tu país por DM antes de confirmar la compra.</p>
+        <p>Sí, consultá disponibilidad y costo de envío a tu país por DM antes de confirmar la compra.</p>
       </details>
       <details>
         <summary>¿Cómo sé mi talla de anillo?</summary>
-        <p>Te puedo guiar para medir tu talla en casa con un hilo o una tira de papel — escríbeme y te paso la guía paso a paso.</p>
+        <p>Te puedo guiar para medir tu talla en casa con un hilo o una tira de papel — escribime y te paso la guía paso a paso.</p>
       </details>
       <details>
         <summary>¿Las piezas son de plata real?</summary>
-        <p>Sí, todas las piezas son hechas a mano en plata 950. Cada una incluye certificado de autenticidad.</p>
+        <p>Sí, todas las piezas son plata 950. Cada una incluye certificado de autenticidad.</p>
       </details>
       <details>
         <summary>¿Cómo cuido mis piezas de plata?</summary>
-        <p>Guárdalas en un lugar seco, lejos de perfumes y cremas, y límpialas con un paño suave. Con cada compra recibirás un manual de cuidado.</p>
+        <p>Guardalas en un lugar seco, lejos de perfumes y cremas, y limpialas con un paño suave. Con cada compra recibís un manual de cuidado.</p>
       </details>
       <details>
         <summary>¿Hacen cambios o devoluciones?</summary>
-        <p>No, cada pieza es hecha especialmente para ti, bajo pedido, por esta razón no acepto devoluciones ni cambios. Si la pieza se llega a dañar sí te la reparo.</p>
+        <p>Sí, dentro de los primeros días después de recibir tu pedido, siempre que la pieza esté sin uso. Coordinamos los detalles por DM.</p>
       </details>
     </div>
   </section>
 </main>
+
+<div id="pieceLightbox" class="piece-lightbox" hidden aria-hidden="true">
+  <button type="button" class="piece-lightbox-backdrop" aria-label="Cerrar vista ampliada"></button>
+  <div class="piece-lightbox-panel" role="dialog" aria-modal="true" aria-labelledby="pieceLightboxTitle">
+    <button type="button" class="piece-lightbox-close" aria-label="Cerrar">×</button>
+    <div class="piece-lightbox-image"><img id="pieceLightboxImg" src="" alt=""></div>
+    <div class="piece-lightbox-info">
+      <p class="cat" id="pieceLightboxCat"></p>
+      <p class="name" id="pieceLightboxTitle"></p>
+      <p class="desc" id="pieceLightboxDesc"></p>
+      <div class="price-row">
+        <span class="price" id="pieceLightboxPrice"></span>
+        <span class="status" id="pieceLightboxStatus"></span>
+      </div>
+      <a class="cta" id="pieceLightboxCta" href="#" target="_blank" rel="noopener">Consultar →</a>
+    </div>
+  </div>
+</div>
 
 <footer>
   <div class="fmark"><img src="logo.png" alt="Flabelum"></div>
@@ -666,6 +792,78 @@
   // seamless -50% loop never shows a blank gap.
   buildBlock(blockA, 12);
   buildBlock(blockB, 12);
+})();
+
+(function(){
+  var lightbox = document.getElementById('pieceLightbox');
+  var backdrop = lightbox.querySelector('.piece-lightbox-backdrop');
+  var closeBtn = lightbox.querySelector('.piece-lightbox-close');
+  var imgEl = document.getElementById('pieceLightboxImg');
+  var catEl = document.getElementById('pieceLightboxCat');
+  var titleEl = document.getElementById('pieceLightboxTitle');
+  var descEl = document.getElementById('pieceLightboxDesc');
+  var priceEl = document.getElementById('pieceLightboxPrice');
+  var statusEl = document.getElementById('pieceLightboxStatus');
+  var ctaEl = document.getElementById('pieceLightboxCta');
+  var lastFocus = null;
+
+  function openLightbox(piece){
+    var thumbImg = piece.querySelector('.thumb img');
+    var info = piece.querySelector('.info');
+    if(!thumbImg || !info) return;
+
+    lastFocus = document.activeElement;
+    imgEl.src = thumbImg.currentSrc || thumbImg.src;
+    imgEl.alt = thumbImg.alt;
+    catEl.textContent = info.querySelector('.cat').textContent;
+    titleEl.textContent = info.querySelector('.name').textContent;
+    descEl.textContent = info.querySelector('.desc').textContent;
+    priceEl.textContent = info.querySelector('.price').textContent;
+    statusEl.textContent = info.querySelector('.status').textContent;
+    ctaEl.href = info.querySelector('.cta').href;
+
+    lightbox.hidden = false;
+    lightbox.setAttribute('aria-hidden', 'false');
+    lightbox.classList.add('is-open');
+    document.body.classList.add('lightbox-open');
+    closeBtn.focus();
+  }
+
+  function closeLightbox(){
+    lightbox.classList.remove('is-open');
+    lightbox.hidden = true;
+    lightbox.setAttribute('aria-hidden', 'true');
+    document.body.classList.remove('lightbox-open');
+    if(lastFocus && lastFocus.focus) lastFocus.focus();
+  }
+
+  document.getElementById('tienda').addEventListener('click', function(e){
+    var thumb = e.target.closest('.thumb');
+    if(!thumb) return;
+    e.preventDefault();
+    openLightbox(thumb.closest('.piece'));
+  });
+
+  document.getElementById('tienda').addEventListener('keydown', function(e){
+    if(e.key !== 'Enter' && e.key !== ' ') return;
+    var thumb = e.target.closest('.thumb');
+    if(!thumb) return;
+    e.preventDefault();
+    openLightbox(thumb.closest('.piece'));
+  });
+
+  backdrop.addEventListener('click', closeLightbox);
+  closeBtn.addEventListener('click', closeLightbox);
+  document.addEventListener('keydown', function(e){
+    if(e.key === 'Escape' && lightbox.classList.contains('is-open')) closeLightbox();
+  });
+
+  document.querySelectorAll('.piece .thumb').forEach(function(thumb){
+    thumb.setAttribute('role', 'button');
+    thumb.setAttribute('tabindex', '0');
+    var name = thumb.closest('.piece').querySelector('.name');
+    if(name) thumb.setAttribute('aria-label', 'Ver detalle de ' + name.textContent);
+  });
 })();
 </script>
 </body>
