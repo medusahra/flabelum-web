@@ -67,15 +67,25 @@
   .hero-mark-wrap{
     position:relative;display:flex;justify-content:center;align-items:center;
   }
-  .hero-mark-wrap .ring{
-    position:absolute;width:min(42vw,460px);height:min(42vw,460px);
-    animation:spin-slow 50s linear infinite;
+  .hero-mark-wrap .ring{position:absolute;top:50%;left:50%;transform-origin:center;}
+  .hero-mark-wrap .ring-outer{
+    width:min(46vw,480px);height:min(46vw,480px);margin:calc(min(46vw,480px) / -2) 0 0 calc(min(46vw,480px) / -2);
+    animation:spin-cw 70s linear infinite;
+  }
+  .hero-mark-wrap .ring-mid{
+    width:min(36vw,380px);height:min(36vw,380px);margin:calc(min(36vw,380px) / -2) 0 0 calc(min(36vw,380px) / -2);
+    animation:spin-ccw 46s linear infinite;
+  }
+  .hero-mark-wrap .ring-inner{
+    width:min(26vw,280px);height:min(26vw,280px);margin:calc(min(26vw,280px) / -2) 0 0 calc(min(26vw,280px) / -2);
+    animation:spin-cw 28s linear infinite;
   }
   .hero-mark-wrap img.logo-big{
-    position:relative;width:min(30vw,320px);
+    position:relative;width:min(22vw,220px);
     animation:breathe 4.5s ease-in-out infinite;
   }
-  @keyframes spin-slow{from{transform:rotate(0deg);}to{transform:rotate(360deg);}}
+  @keyframes spin-cw{from{transform:rotate(0deg);}to{transform:rotate(360deg);}}
+  @keyframes spin-ccw{from{transform:rotate(0deg);}to{transform:rotate(-360deg);}}
   @keyframes breathe{0%,100%{transform:scale(1);}50%{transform:scale(1.035);}}
   .hero-copy{position:relative;z-index:2;}
   .hero-copy .brand{
@@ -261,8 +271,18 @@
       <p class="credo">Joyas de autor forjadas a mano</p>
     </div>
     <div class="hero-mark-wrap">
-      <svg class="ring" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
-        <circle cx="100" cy="100" r="94" fill="none" stroke="#000" stroke-width="1.4" stroke-dasharray="1 10" stroke-linecap="round"/>
+      <svg class="ring ring-outer" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+        <circle cx="100" cy="100" r="96" fill="none" stroke="#000" stroke-width="0.75"/>
+        <circle cx="100" cy="4" r="2.2" fill="#000"/>
+        <circle cx="196" cy="100" r="1.4" fill="#000"/>
+        <circle cx="30" cy="166" r="1.4" fill="#000"/>
+      </svg>
+      <svg class="ring ring-mid" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+        <circle cx="100" cy="100" r="96" fill="none" stroke="#000" stroke-width="1" stroke-dasharray="0.5 7"/>
+      </svg>
+      <svg class="ring ring-inner" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+        <circle cx="100" cy="100" r="96" fill="none" stroke="#000" stroke-width="0.6"/>
+        <circle cx="4" cy="100" r="1.8" fill="#000"/>
       </svg>
       <img class="logo-big" src="logo.png" alt="Flabelum">
     </div>
@@ -524,13 +544,13 @@
       <span class="pay-btn" style="cursor:default;">BRE-B: 0091995146</span>
       <a class="pay-btn" href="https://wa.me/573196423502?text=Hola%2C%20quiero%20un%20link%20de%20pago%20personalizado" target="_blank" rel="noopener">Pedir link por WhatsApp</a>
     </div>
-    <p class="pay-note">Elíge el medio que prefieras. Escríbeme por WhatsApp y te envío un link de pago personalizado.</p>
+    <p class="pay-note">Elige el medio que prefieras. Escríbeme por WhatsApp y te envío un link de pago personalizado.</p>
   </section>
 
   <section id="catalogo">
     <div class="catalog-box">
       <div class="section-head" style="border:none;justify-content:center;margin-bottom:20px;"><span class="mark"></span><h2>Catálogo</h2></div>
-      <p>Algunas de las piezas de la colección Attoverso disponibles, en un solo lugar. Miralo en línea o descargalo para verlo cuando quieras.</p>
+      <p>Algunas de las piezas de la colección Attoverso disponibles, en un solo lugar. Míralo en línea o descárgalo para verlo cuando quieras.</p>
       <div class="catalog-actions">
         <a class="primary" href="assets/Flabelum%202026.pdf" target="_blank" rel="noopener">Ver catálogo</a>
         <a href="assets/Flabelum%202026.pdf" download>Descargar PDF</a>
@@ -548,8 +568,8 @@
       -->
       <iframe src="" height="500" allowtransparency="true" frameborder="0"></iframe>
       <div class="ig-fallback">
-        Acá va a aparecer tu feed de Instagram en vivo — pasame el link de SnapWidget y lo conecto.
-        Mientras tanto, seguinos en <a href="https://www.instagram.com/flabelum" target="_blank" rel="noopener" style="text-decoration:underline;">@flabelum</a>.
+        Acá va a aparecer tu feed de Instagram en vivo — pásame el link de SnapWidget y lo conecto.
+        Mientras tanto, síguenos en <a href="https://www.instagram.com/flabelum" target="_blank" rel="noopener" style="text-decoration:underline;">@flabelum</a>.
       </div>
     </div>
   </section>
@@ -571,7 +591,7 @@
       </details>
       <details>
         <summary>¿Hacen piezas por encargo?</summary>
-        <p>Sí, comisiones personalizadas en plata u oro, incluyen certificado de autenticidad y estuche de lujo. Cúentame la idea por DM o WhatsApp y te armo la cotización.</p>
+        <p>Sí, comisiones personalizadas en plata u oro, incluyen certificado de autenticidad y estuche de lujo. Cuéntame la idea por DM o WhatsApp y te armo la cotización.</p>
       </details>
       <details>
         <summary>¿Cuánto tarda un envío?</summary>
@@ -579,7 +599,7 @@
       </details>
       <details>
         <summary>¿Hacen envíos internacionales?</summary>
-        <p>Sí, por DHL, consultá disponibilidad y costo de envío a tu país por DM antes de confirmar la compra.</p>
+        <p>Sí, por DHL, consulta disponibilidad y costo de envío a tu país por DM antes de confirmar la compra.</p>
       </details>
       <details>
         <summary>¿Cómo sé mi talla de anillo?</summary>
@@ -591,7 +611,7 @@
       </details>
       <details>
         <summary>¿Cómo cuido mis piezas de plata?</summary>
-        <p>Gúardalas en un lugar seco, lejos de perfumes y cremas, y límpialas con un paño suave. Con cada compra recibirás un manual de cuidado.</p>
+        <p>Guárdalas en un lugar seco, lejos de perfumes y cremas, y límpialas con un paño suave. Con cada compra recibirás un manual de cuidado.</p>
       </details>
       <details>
         <summary>¿Hacen cambios o devoluciones?</summary>
